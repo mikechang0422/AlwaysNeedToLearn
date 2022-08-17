@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Style | Modules</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <style>
+        .warpper {
+            max-width: 960px;
+            margin: 10rem auto 2rem auto;
+        }
+    
+        li + li {
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="warpper">
+        <section>
+            <h2>fontContent style</h2>
+            <ul>
+                <li>
+                    <h1>這是H1</h1>
+                </li>
+                <li>
+                    <h2>這是H2</h2>
+                </li>
+                <li>
+                    <h3>這是H3</h3>
+                </li>
+                <li>
+                    <h4>這是H4</h4>
+                </li>
+                <li>
+                    <h5>這是H5</h5>
+                </li>
+                <li>
+                    <h6>這是H6</h6>
+                </li>
+                <li>
+                    <p>這是P</p>
+                </li>
+            </ul>
+        </section>
+        <hr>
+        <section>
+            <h2>btn style</h2>
+            <ul>
+                <li>
+                    <button class="btn">Button按鈕</button>
+                </li>
+                <li>
+                    <input class="btn" type="button" value="Input按鈕">
+                </li>
+                <li>
+                    <input class="btn" type="reset" value="Input重設">
+                </li>
+                <li>
+                    <input class="btn" type="submit" value="Input送出">
+                </li>
+                <li>
+                    <a class="btn" href="javascript: void(0);">A按鈕</a>
+                </li>
+                <li>
+                    <a class="btn" href="javascript: void(0);" onclick="showLoading()">Loading按鈕</a>
+                </li>
+            </ul>
+        </section>
+        <hr>
+        <section>
+            <h2></h2>
+        </section>
+        <a class="btn" href="./index.html">回上一頁</a>
+    </div>
+</body>
+
+<script>
+    const loader = document.querySelector('.show-load')
+    loader.addEventListener('dblclick', function(){
+        loader.style.display = 'none'
+    })
+
+    function showLoading() {
+        loader.style.display = 'flex'
+    }
+</script>
+</html>

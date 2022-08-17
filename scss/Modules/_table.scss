@@ -1,0 +1,48 @@
+.admin_table {
+    width: 100%;
+    background-color: $white;
+    border: 1px solid $td-border-color;
+
+    tr {
+        &:nth-child(odd) {
+            background-color: $table-tr-odd-bg-color;
+        }
+
+        &:hover {
+            background-color: $table-tr-bg-hover;
+            transition: $transiton;
+
+            td {
+                border-bottom-color: desaturate(darken($table-tr-bg-hover, 20), 35);
+            }
+        }
+
+        &.odd {
+            background-color: $table-tr-odd-bg-color;
+
+            &:hover {
+                background-color: $table-tr-bg-hover;
+                transition: $transiton;
+            }
+        }
+    }
+
+    th {
+        padding: 7px;
+        color: $white;
+        background-color: $table-border-color;
+        border: 1px solid $th-border-color;
+    }
+
+    td {
+        padding: 5px 7px;
+        color: $font-color;
+        border: 1px solid $td-border-color;
+    }
+
+    &.th_center {
+        th {
+            text-align: center;
+        }
+    }
+}

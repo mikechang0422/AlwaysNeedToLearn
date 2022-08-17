@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Style</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <style>
+        .warpper {
+            max-width: 960px;
+            margin: 10rem auto 2rem auto;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .show_load_1,
+        .show_load_2,
+        .show_load_3 {
+            position: absolute;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #333c;
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="show_load show_load_1">
+        <div class="loader_1"></div>
+    </div>
+    </div>
+    <div class="show_load show_load_2">
+        <div class="loader_2">
+            <span style="--i: 1;"></span>
+            <span style="--i: 2;"></span>
+            <span style="--i: 3;"></span>
+            <span style="--i: 4;"></span>
+            <span style="--i: 5;"></span>
+            <span style="--i: 6;"></span>
+            <span style="--i: 7;"></span>
+            <span style="--i: 8;"></span>
+            <span style="--i: 9;"></span>
+            <span style="--i: 10;"></span>
+            <span style="--i: 11;"></span>
+            <span style="--i: 12;"></span>
+            <span style="--i: 13;"></span>
+            <span style="--i: 14;"></span>
+            <span style="--i: 15;"></span>
+            <span style="--i: 16;"></span>
+            <span style="--i: 17;"></span>
+            <span style="--i: 18;"></span>
+            <span style="--i: 19;"></span>
+            <span style="--i: 20;"></span>
+        </div>
+    </div>
+    <div class="show_load show_load_3">
+        <div class="loader_3"></div>
+    </div>
+
+    <div class="warpper">
+        <h1 class="uppercase text_center pb_5">loading style</h1>
+        <section class="text_center pb_5">
+            <ul>
+                <li>
+                    <a class="btn uppercase" href="javascript: void(0);" onclick="showLoading1()">Loading1</a>
+                </li>
+                <li>
+                    <a class="btn uppercase" href="javascript: void(0);" onclick="showLoading2()">Loading2</a>
+                </li>
+                <li>
+                    <a class="btn uppercase" href="javascript: void(0);" onclick="showLoading3()">Loading11</a>
+                </li>
+            </ul>
+        </section>
+        <div class="tool text_center">
+            <a class="btn" href="./index.html">回上一頁</a>
+        </div>
+    </div>
+    <script src="../Js/loading.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+$pc-min: 1440px;
+$pc-max: 1399px;
+$labtop-min: 1200px;
+$labtop-max: 1199px;
+$pad-min: 768px;
+$pad-max: 767px;
+$phone-min: 480px;
+$phone-max: 479px;
+
+// (PC) 寬度 1440px 以上執行
+@mixin view-xl-up {
+    @media (min-width: $pc-min) {
+        @content;
+    }
+}
+
+// (LabTop) 寬度 1200px 以上執行
+@mixin view-lg-up {
+    @media (min-width: $labtop-min) {
+        @content;
+    }
+}
+
+// (PC + PAD) 寬度 768px 以上執行
+@mixin view-md-up {
+    @media (min-width: $pad-min) {
+        @content;
+    }
+}
+
+//  (Only PAD)最大寬度是 767px  且 當最小寬度是 480px 時執行
+@mixin view-lg-md {
+    @media (max-width: $pad-max) and (min-width: $phone-min) {
+        @content;
+    }
+}
+
+// (小PC + LabTop) 寬度 1441px 以下執行
+@mixin view-xl-dowm {
+    @media (max-width: $pc-max) {
+        @content;
+    }
+}
+
+// (LabTop + PAD + MOBILE) 寬度 1201px 以下執行
+@mixin view-lg-dowm {
+    @media (max-width: $labtop-max) {
+        @content;
+    }
+}
+
+// (PAD + MOBILE) 寬度 767px 以下執行
+@mixin view-md-dowm {
+    @media (max-width: $pad-max) {
+        @content;
+    }
+}
+
+// (MOBILE) 寬度 479px 以下執行
+@mixin view-sm-dowm {
+    @media (max-width: $phone-max) {
+        @content;
+    }
+}

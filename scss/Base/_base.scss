@@ -1,0 +1,50 @@
+// 設定畫面rem
+:root {
+    font-size: 15px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    // 為了顯眼額外設定的顏色
+    background-color: antiquewhite;
+}
+
+// 排版區塊重製
+header,
+main,
+section,
+article,
+aside,
+nav,
+footer {
+    padding: 0;
+    margin: 0;
+}
+
+// 標題&內容區塊重製
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    padding: 0;
+    margin: 0;
+}
+
+// 連結移除底線
+a {
+    text-decoration: none;
+}
+
+// 清單移除表頭
+ol,
+ul {
+    list-style: none;
+}

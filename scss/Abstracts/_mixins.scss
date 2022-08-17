@@ -1,0 +1,68 @@
+// 按鈕高度
+@mixin btn-height($height) {
+    button,
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    a {
+        &.btn {
+            height: $height;
+            line-height: $height;
+        }
+    }
+}
+
+// 輸入框高度
+@mixin input-height($height) {
+    input[type="text"],
+    input[type="password"],
+    input[type="file"],
+    select {
+        height: $height;
+    }
+
+    .pagination .btn {
+        padding: 0;
+        height: $height;
+        line-height: $height;
+    }
+}
+
+// Loading高度
+@mixin loading-height($size) {
+    .loader_1 {
+        width: $size;
+        height: $size;
+    }
+
+    .loader_2 span::before {
+        width: $size - 160px;
+        height: $size - 160px;
+
+        @include view-md-up {
+            width: $size - 180px;
+            height: $size - 180px;
+        }
+
+        @include view-xl-up {
+            width: $size - 200px;
+            height: $size - 200px;
+        }
+    }
+
+    .loader_3 {
+        width: $size;
+        height: $size;
+
+        &::before,
+        &::after {
+            width: $size - 18px;
+            height: $size - 18px;
+        }
+
+        &::before {
+            width: $size - 34px;
+            height: $size - 34px;
+        }
+    }
+}

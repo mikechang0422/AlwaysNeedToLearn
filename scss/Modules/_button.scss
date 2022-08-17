@@ -1,0 +1,36 @@
+// 針對RWD設計三種尺寸
+@include btn-height(40px);
+
+@include view-md-up {
+    @include btn-height(36px);
+}
+
+@include view-xl-up {
+    @include btn-height(32px);
+}
+
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+a {
+    &.btn {
+        display: inline-block;
+        padding: 0 12px;
+        color: $btn-color;
+        background-color: $btn-bg;
+        border: 1px solid;
+        outline: none;
+        transition: $transiton;
+        cursor: pointer;
+        font-weight: 400;
+        vertical-align: middle;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: lighten($btn-color, 10%);
+            background-color: darken($btn-bg, 10%);
+        }
+    }
+}

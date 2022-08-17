@@ -1,0 +1,9 @@
+a,
+button,
+input[type="button"],
+input[type="submit"] {
+    &.link {
+        text-decoration: none;
+        color: $link-color;
+    }
+}

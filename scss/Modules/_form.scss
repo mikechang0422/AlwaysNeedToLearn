@@ -1,0 +1,9 @@
+@include input-height(40px);
+
+@include view-md-up {
+    @include input-height(36px);
+}
+
+@include view-xl-up {
+    @include input-height(32px);
+}

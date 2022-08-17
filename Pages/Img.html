@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Img Style</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <style>
+        .warpper {
+            max-width: 960px;
+            margin: 10rem auto 2rem auto;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+        .xs {
+            width: 540px;
+        }
+        .md {
+            width: 768px;
+        }
+        .lg {
+            width: 960px;
+        }
+        .xl {
+            width: 1200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="warpper">
+        <h1 class="uppercase text_center pb_5">Img style</h1>
+        <section class="text_center pb_5">
+            <h2>img-fluid</h2>
+            <ul>
+                <li>
+                    <div class="xs">
+                        <h3><code>width: 540px;</code></h3>
+                        <img class="img_fluid" src="https://picsum.photos/1600/1200?random=14" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="md">
+                        <h3><code>width: 768px;</code></h3>
+                        <img class="img_fluid" src="https://picsum.photos/1600/1200?random=14" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="lg">
+                        <h3><code>width: 960px;</code></h3>
+                        <img class="img_fluid" src="https://picsum.photos/1600/1200?random=14" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div class="xl">
+                        <h3><code>width: 1200px;</code></h3>
+                        <img class="img_fluid" src="https://picsum.photos/1600/1200?random=14" alt="">
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h3><code>width: 100%;</code></h3>
+                        <img class="img_fluid" src="https://picsum.photos/1600/1200?random=14" alt="">
+                    </div>
+                </li>
+
+            </ul>
+        </section>
+        <section class="text_center pb_5">
+            <h2>img_thumbnail</h2>
+            <ul>
+                <li>
+                    <h3><code>width: 100%;</code></h3>
+                    <img class="img_thumbnail" src="https://picsum.photos/1440/1200?random=16" alt="">
+                </li>
+            </ul>
+        </section>
+
+        <div class="tool text_center">
+            <a class="btn" href="./index.html">回上一頁</a>
+        </div>
+    </div>
+    <script src="../Js/loading.js"></script>
+</body>
+
+</html>

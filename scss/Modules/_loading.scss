@@ -1,0 +1,115 @@
+// $size: 100px;
+// 針對RWD設計三種尺寸
+@include loading-height(190px);
+
+@include view-md-up {
+    @include loading-height(210px);
+}
+
+@include view-xl-up {
+    @include loading-height(230px);
+}
+
+.loader_1 {
+    display: inline-block;
+
+    // width: $size;
+    // height: $size;
+    border: 5px solid $white;
+    border-bottom-color: $loader-color;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+}
+
+.loader_2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20%;
+    height: 20%;
+    transform: translate(-50%, -50%);
+
+    // 點點樣式
+    span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: rotate(calc(18deg * var(--i)));
+
+        &::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            // width: $size - 70px;
+            // height: $size - 70px;
+            background-color: $loader-color;
+            border-radius: 50%;
+            content: "";
+            animation: loader_2_animation 2s linear infinite;
+            animation-delay: calc(0.1s * var(--i));
+            transform: scale(0);
+        }
+    }
+}
+
+.loader_3 {
+    position: relative;
+    display: inline-block;
+
+    // width: $size;
+    // height: $size;
+    border: 7px solid;
+    border-color: $white $white transparent transparent;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+
+    &::after,
+    &::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+
+        // width: $size - 16px;
+        // height: $size - 16px;
+        border: 7px solid;
+        border-color: transparent transparent $loader-color $loader-color;
+        border-radius: 50%;
+        content: "";
+        animation: rotationBack 0.5s linear infinite;
+        transform-origin: center center;
+    }
+
+    &::before {
+        // width: $size - 32px;
+        // height: $size - 32px;
+        border-color: $white $white transparent transparent;
+        animation: rotation 5s linear infinite;
+    }
+}
+
+@keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes rotationBack {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+@keyframes loader_2_animation {
+    0% {
+        transform: scale(1);
+    }
+
+    80%,
+    100% {
+        transform: scale(0);
+    }
+}
