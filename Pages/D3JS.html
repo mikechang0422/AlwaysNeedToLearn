@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3 JS</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+    <div class="warpper max_width">
+        <h1 class="uppercase text_center pb_5">D3.js</h1>
+        <div class="show_block">
+
+        </div>
+        <div class="tool text_center">
+            <a class="btn" href="./index.html">回上一頁</a>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/7.6.1/d3.min.js' integrity='sha512-MefNfAGJ/pEy89xLOFs3V6pYPs6AmUhXJrRlydI/9wZuGrqxmrdQ80zKHUcyadAcpH67teDZcBeS6oMJLPtTqw==' crossorigin='anonymous'></script>
+    <script>
+
+        // 跨網域存取 API 資料
+        // 使用 cors-anywhere 
+        const cors = "https://cors-anywhere.herokuapp.com/";
+        const cors2 = "https://secret-ocean-49799.herokuapp.com/";
+        const url = "https://soa.tainan.gov.tw/Api/Service/Get/6e254f32-bfe1-4a1c-b81f-8c5be077b3db";
+        async function getCorsData() {
+            dataGet = await d3.json(`${url}`);
+            console.log('dataGet', dataGet);
+        }
+        getCorsData();
+    </script>
+</body>
+
+</html>

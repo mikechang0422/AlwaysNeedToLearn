@@ -1,0 +1,191 @@
+.warpper {
+  --primary-color: #f90;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fafafa;
+}
+.warpper main {
+  padding: 10px;
+  margin: 0 auto;
+  width: 480px;
+  max-width: 100%;
+}
+.warpper main .border-block {
+  border: 1px solid #333;
+  border-radius: 2rem;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+.warpper main .h2 {
+  margin-bottom: 1.5rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--primary-color);
+  text-shadow: 1px 1px 2px #333;
+}
+.warpper main table {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 400px;
+}
+.warpper main table td {
+  padding: 4px 6px;
+  margin-bottom: 2px;
+  font-size: calc(1rem + 0.09vw);
+  font-weight: 500;
+  text-align: right;
+  text-shadow: 1px 1px 3px #aaa;
+  border-bottom: 1px solid #dcdcdc;
+  vertical-align: baseline;
+}
+.warpper main table td.title {
+  width: 50%;
+  text-align: left;
+}
+.warpper main table tr:last-child td {
+  border-bottom: none;
+}
+@media (min-width: 768px) {
+  .warpper main {
+    padding: 20px;
+    max-width: 80vw;
+  }
+}
+.warpper .logo-block {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.warpper .logo-block img {
+  width: 100%;
+  max-width: 200px;
+}
+.warpper .title-block {
+  position: relative;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.warpper .title-block h2 {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  padding: 6px 18px;
+  margin: 0 auto;
+  width: auto;
+  font-size: calc(1.7rem + 0.09vw);
+  text-align: center;
+  color: #333;
+  background-color: #fafafa;
+  font-weight: 700;
+}
+.warpper .title-block .line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.warpper .loading h2 {
+  font-size: calc(2.325rem + 0.9vw);
+}
+.warpper .loading span {
+  display: inline-block;
+  -webkit-animation: 1s loading steps(5, end) infinite;
+          animation: 1s loading steps(5, end) infinite;
+}
+.warpper .loading span::after {
+  content: ".";
+}
+.warpper .loading span:nth-child(2) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.warpper .loading span:nth-child(3) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+.warpper .qr-block {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  -webkit-box-shadow: 0 0 3px #6c6c6c;
+          box-shadow: 0 0 3px #6c6c6c;
+}
+.warpper .qr-block p {
+  margin-bottom: 10px;
+  font-size: calc(1rem + 0.09vw);
+  font-weight: 500;
+  text-align: left;
+  text-shadow: 1px 1px 3px #aaa;
+}
+.warpper .qr-block p.text-danger {
+  text-align: center;
+}
+.warpper .qr-block p span {
+  text-indent: 1rem;
+}
+.warpper .qr-block p.order, .warpper .qr-block p.dollar {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 350px;
+  text-align: center;
+}
+.warpper .qr-block .timer {
+  margin-bottom: 40px;
+  text-align: center;
+  color: palevioletred;
+}
+.warpper .qr-block img {
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 100px;
+}
+.warpper .qr-block .tip {
+  margin-bottom: 0;
+  font-size: 0.75em;
+  text-align: center;
+  color: #dc3545;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 5px 10px;
+  width: 100%;
+  font-size: 0.75em;
+  text-align: center;
+  background-color: transparent;
+}/*# sourceMappingURL=OutSidePage.css.map */

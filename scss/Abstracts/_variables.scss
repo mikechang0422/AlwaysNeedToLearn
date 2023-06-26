@@ -26,7 +26,11 @@ $font-size-small: 0.8rem;
 $font-size-large: 1.2rem;
 
 // Btn Form 相關元素固定高度
-$height: 40px;
+$height: 32px;
+$placeholder: #a4a4a4;
+$disabled-color: #8b8b87;
+$disabled-bg-color: #ebebe4;
+$disabled-border-color: #cacaca;
 
 // Btn
 $btn-bg: $primary-bg;
@@ -36,12 +40,13 @@ $btn-height: $height;
 // link
 $link-color: $primary-color;
 
-// Input 輸入框線的顏色
+// Input
 $input-border: desaturate(lighten($secondary-color, 35), 45);
+$input-outline-hover: $thired-color;
 $input-height: $height;
 
 // Animation
-$transiton: all 0.15s ease-in-out;
+$transition: all 0.15s ease-in-out;
 
 // loader
 $loader-color: lighten($primary-color, 35);

@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="../style/style.css">
     <title>Style List</title>
     <style>
-        .warpper {
-            max-width: 960px;
-            margin: 10rem auto 0 auto;
-        }
-
         ul {
             display: flex;
             justify-content: center;
@@ -26,7 +21,7 @@
 </head>
 
 <body>
-    <div class="warpper">
+    <div class="warpper max_width">
         <h1 class="capitalize text_center mb_4">style list</h1>
         <h2 class="capitalize text_center mb_4">layout</h2>
         <h2 class="capitalize text_center mb_4">modules</h2>
@@ -37,8 +32,40 @@
                 <li><a href="./Img.html" class="btn uppercase">img</a></li>
                 <li><a href="./Loading.html" class="btn uppercase">loading</a></li>
                 <li><a href="./Table.html" class="btn uppercase">table</a></li>
+                <li><a href="./Form.html" class="btn uppercase">form</a></li>
             </ul>
         </section>
+        <!-- <section>
+            <input type="text" id="testonblur">
+            <script>
+                document.querySelector('#testonblur').addEventListener('blur', function(){
+                    let Str = this.value
+                    console.log(Str)
+                    let lastOneStr = Number(Str.length - 1)
+                    let lastTwoStr = Number(Str.length - 2)
+                    if((Str[lastTwoStr] === "企") && (Str[lastOneStr] === "業")){
+                        Str = Str + "股份有限公司"
+                        document.querySelector('#testonblur').value = Str
+                    }
+                    console.log(Str)
+                })
+            </script>
+        </section>
+        <section>
+            <input type="text" id="test2">
+            <script>
+                document.querySelector('#test2').addEventListener('blur', function(){
+                    let Str = this.value.split('')
+                    console.log(Str[Str.length - 1])
+
+                    if((Str[Str.length - 2] === "企") && (Str[Str.length - 1] === "業")) {
+                        this.value = this.value + "股份有限公司"
+                    }
+
+                })
+            </script> -->
+        </section>
+
         <h2 class="capitalize text_center mb_4">pages</h2>
     </div>
 </body>

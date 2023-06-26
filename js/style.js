@@ -4,7 +4,8 @@ const rabbit = {
     printDaily: function() {
         this.daily.map(function(item){
             // window 物件
-            console.log(this) 
+            console.log(this)
+            console.log(item) 
         })
     }
 }

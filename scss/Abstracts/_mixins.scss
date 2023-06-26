@@ -66,3 +66,48 @@
         }
     }
 }
+
+// 觸碰式互動樣式
+@mixin hover {
+    &:hover,
+    &:active,
+    &:focus {
+        @content;
+    }
+}
+
+// 禁止樣式
+@mixin disabled {
+    &:disabled,
+    &.disabled {
+        @content;
+    }
+}
+
+// 清除預設樣式 select 或number右側箭頭等
+%appearance {
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: none;
+}
+
+// icon for table
+%icon-sorting {
+    display: inline-block;
+    overflow: hidden;
+    width: 15px;
+    height: 15px;
+    color: transparent;
+
+    &:hover {
+        background-color: transparent;
+    }
+
+    &.disabled {
+        color: transparent !important;
+        background-color: transparent !important;
+        opacity: 0.4;
+        filter: grayscale(1);
+    }
+}

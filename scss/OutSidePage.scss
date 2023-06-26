@@ -1,0 +1,201 @@
+.warpper {
+    --primary-color: #f90;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fafafa;
+
+    main {
+        padding: 10px;
+        margin: 0 auto;
+        width: 480px;
+        max-width: 100%;
+
+        .border-block {
+            border: 1px solid #333;
+            border-radius: 2rem;
+            box-shadow: 1px 1px 3px rgb(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .h2 {
+            margin-bottom: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px #333;
+        }
+
+        table {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 400px;
+
+            td {
+                padding: 4px 6px;
+                margin-bottom: 2px;
+                font-size: calc(1rem + 0.09vw);
+                font-weight: 500;
+                text-align: right;
+                text-shadow: 1px 1px 3px #aaa;
+                border-bottom: 1px solid #dcdcdc;
+                vertical-align: baseline;
+
+                &.title {
+                    width: 50%;
+                    text-align: left;
+                }
+            }
+
+            tr {
+                &:last-child td {
+                    border-bottom: none;
+                }
+            }
+        }
+
+        @media (min-width: 768px) {
+            padding: 20px;
+            max-width: 80vw;
+        }
+    }
+
+    .logo-block {
+        margin-bottom: 20px;
+        text-align: center;
+
+        img {
+            width: 100%;
+            max-width: 200px;
+        }
+    }
+
+    .title-block {
+        position: relative;
+        padding: 10px 0;
+        margin-bottom: 30px;
+        text-align: center;
+
+        h2 {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            padding: 6px 18px;
+            margin: 0 auto;
+            width: auto;
+            font-size: calc(1.7rem + 0.09vw);
+            text-align: center;
+            color: #333;
+            background-color: #fafafa;
+            font-weight: 700;
+        }
+
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+            transform: translateY(-50%);
+        }
+    }
+
+    .loading {
+        h2 {
+            font-size: calc(2.325rem + 0.9vw);
+        }
+
+        span {
+            display: inline-block;
+            animation: 1s loading steps(5, end) infinite;
+
+            &::after {
+                content: ".";
+            }
+
+            &:nth-child(2) {
+                animation-delay: 0.3s;
+            }
+
+            &:nth-child(3) {
+                animation-delay: 0.6s;
+            }
+        }
+    }
+
+    .qr-block {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 3px #6c6c6c;
+
+        p {
+            margin-bottom: 10px;
+            font-size: calc(1rem + 0.09vw);
+            font-weight: 500;
+            text-align: left;
+            text-shadow: 1px 1px 3px #aaa;
+
+            &.text-danger {
+                text-align: center;
+            }
+
+            span {
+                text-indent: 1rem;
+            }
+
+            &.order,
+            &.dollar {
+                margin-right: auto;
+                margin-left: auto;
+                max-width: 350px;
+                text-align: center;
+            }
+        }
+
+        .timer {
+            margin-bottom: 40px;
+            text-align: center;
+            color: palevioletred;
+        }
+
+        img {
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 100px;
+        }
+
+        .tip {
+            margin-bottom: 0;
+            font-size: 0.75em;
+            text-align: center;
+            color: #dc3545;
+        }
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 5px 10px;
+    width: 100%;
+    font-size: 0.75em;
+    text-align: center;
+    background-color: transparent;
+}

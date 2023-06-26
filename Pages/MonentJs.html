@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hent-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mike">
+    <link rel="stylesheet" href="../style/style.css">
+    <title>Style List</title>
+    <style>
+        .showDemo {
+            padding: 20px 0;
+        }
+
+        .showDemo h3 {
+            padding: 10px 0;
+            font-weight: 700;
+        }
+
+        .showDemo p {
+            padding: 5px 0;
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warpper max_width">
+        <h1 class="uppercase text_center pb_5">Moment.js</h1>
+        <section id="showDemo" class="showDemo"></section>
+        <section class="tool text_center">
+            <a class="btn" href="./index.html">回上一頁</a>
+        </section>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js'></script>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/zh-tw.min.js'></script> -->
+    <script>
+        const demo = document.querySelector('#showDemo')
+        let String = ''
+        
+        // new Date()
+        let d = new Date()
+        let m = moment()
+        let newDate = d.getFullYear() + '/' + (d.getMonth() + 1) + '/' + d.getDay() + '/' + d.getHours() + ':' + d.getMonth() + ':' + d.getMilliseconds()
+        
+        String = `
+        <h3>newDate() 跟 moment() 兩者抓取的都是電腦設定的當前時間</h3>
+        <p>new Date() = ${d}</p>
+        <p>moment() = ${m} </p>
+        <h3>獲取時間單位的個別用法</h3>
+        <h3>new Date()</h3>
+        <p>newDate = ${newDate}</p>`
+
+        let mBefor = moment(1991/01/02)
+        let mAfter = moment(2025/12/25)
+        
+        String = String + `
+        <h3>設定時間</h3>
+        <p>moment(1991/01/02) = ${mBefor} or moment(2025/12/25) = ${mAfter}</p>`
+        
+        let mFormat1 = moment('1999/10/09','YYYY-MM-DD')
+        let mFormat2 = moment('09-09-1999','MM-DD-YYYY')
+        let mFormat3 = moment('2022/09/29 23:00:00','YYYY/MM/DD HH:mm:ss')
+        String = String + `
+        <h3>String + Format 這樣就可以同時帶入值並設定用藥什麼形式產出</h3>
+        <p>moment('1999/09/09','YYYY-MM-DD') = ${mFormat1}</p>
+        <p>moment('09-09-1999','MM-DD-YYYY') = ${mFormat2}</p>
+        <h3>但通常會用TimeStamp的格式，也就是'YYYY/MM/DD HH:mm:ss'</h3>
+        <p> moment('2022/09/29 23:00:00','YYYY/MM/DD HH:mm:ss') = ${mFormat3}</p>
+        <p>PS:如果沒有用format則會被系統提醒不是正確的日期使用格式</p>`
+
+        let timeMillisecond = new Date().getTime()
+        let timeMilliseconds = moment(timeMillisecond)
+        String = String + `
+        <h3>也可以在moment()內輸入秒數(Milliseconds)讓他轉時間</h3>
+        <p>EX: 先用 new Date().getTime() 獲取當前時間的秒數，在塞回去moment()內轉成時間</p>
+        <p>moment(timeMillisecond) = ${timeMilliseconds}</p>
+        `
+
+        let timeUTC = moment().utc().format()
+        let timeUTC2 = moment.utc("2022-09-30T01:02:03Z")
+        String = String + `
+        <h3>要特別注意utc() , 如果今天前端要傳給後端，後端不把控則一定要添加 .utc() ，會近似於格林威治時間，才不會儲存在資料庫的時間大亂</h3>
+        <p>moment().utc().format() = ${timeUTC}</p>
+        <p>會發現時間最後是Z，那我們依樣可以塞回moment.utc()內回轉回時間</p>
+        <p>EX: moment.utc("2022-09-30T01:02:03Z") = ${timeUTC2}</p>
+        <p>這樣時間就會根據電腦當前時區自動轉換，使用者才無法依靠切換時區來作弊</p>
+        <p>常用於跨國或者國土很大的國家</p>
+        `
+
+        // unix time 下去記也可以 原理是utc時間到你時區的總秒數
+
+
+        // get & set
+
+        let mm = moment()
+        let mmMill = mm.second()
+        let mmMill50 = mm.second(50)
+        String = String + `
+        <h3>獲取時間 跟 設定時間</h3>
+        <h3>()內如果沒寫數值就是取值，如果寫了數值則是賦予值</h3>
+        <p>moment.second() = ${mmMill}</p>
+        <p>moment.second(50) = ${mmMill50}</p>
+        `
+
+        // Display
+        const displayDemo1 = moment().format('[今天是:] dddd')
+        const displayDemo2 = moment().locale('en').format('[today is] dddd')
+        String = String + `
+        <h3>輸出用法有很多在[]中的字是不被轉譯的因此可以有以下用法</h3>
+        <p>moment().format('[今天是:] dd') = ${displayDemo1}</p>
+        <h3>配合時區控制跟語言包 moment().locale('zh-TW') 就可以轉語言了</h3>
+        <h3>也可以抓完整的語言包但如果只是要針對特定地區那就只下載該地區語言包就好，如果有語言包則會直接切換語言，但也可以藉由locale()來切換</h3>
+        <p>moment().locale().format('[today is] dd') = ${displayDemo2}</p>
+        `
+        
+
+        // time from now && from && to mow
+
+        const TimefromNowDemo1 = moment([1991,3,22]).fromNow()
+        const TimefromNowDemo2 = moment([1991,3,22]).fromNow(true)
+        const TimefromNowDemo3 = moment().subtract(5,'minutes').fromNow(true)
+        const TimefromNowDemo4 = moment([2022,11,24])
+        const TimefromNowDemo5 = moment().from(TimefromNowDemo4,true)
+        const TimefromNowDemo6 = moment([2022,11,24]).toNow()
+        
+        
+        String = String + `
+        <h3>藉由formNow()可以計算距離當前時間</h3>
+        <p>moment([1991,3,22]).fromNow() = ${TimefromNowDemo1}</p>
+        <h3>加true就會消失age</h3>
+        <p>moment([1991,3,22]).fromNow(true) = ${TimefromNowDemo2}</p>
+        <h3>可以做像IG的發送訊息，對方多久前發送這種功能</h3>
+        <p>moment().subtract(5,'minutes').fromNow(true) = ${TimefromNowDemo3}</p>
+        <br />
+        <h3>如果是要取兩個時間加減則用from()</h3>
+        <p>當前到聖誕節還有 moment.from(TimefromNowDemo4,true) = ${TimefromNowDemo5}</p>
+        <br />
+        <h3>還有一種是toNow</h3>
+        <p>moment([2022,11,24]).toNow() = ${TimefromNowDemo6}</p>
+        `
+
+        // calendar()
+        const calendarDemo1 = moment().calendar()
+        const calendarDemo2 = moment([1991,3,22]).calendar()
+        
+        String = String + `
+        <h3>日曆模式 但不好控制要出現的內容因此不常使用</h3>
+        <p>moment().calendar() = ${calendarDemo1}</p>
+        <p>moment().calendar([1991,3,22]) = ${calendarDemo2}</p>
+        `
+
+        // difference
+        const differenceDemo1 = moment()
+        const differenceDemo2 = moment().subtract(3,'hour')
+        const differenceDemo3 = differenceDemo1.diff(differenceDemo2)
+        const differenceDemo4 = Number(differenceDemo3) / 60 / 60 / 1000
+        
+        String = String + `
+        <h3>兩個日期比較並用毫秒計算(常用於存在資料庫)</h3>
+        <p>a.diff(b) = ${differenceDemo3}</p>
+        <p>${differenceDemo3} / 60 / 60 / 1000  = ${differenceDemo4} = 相差三小時</p>
+        `
+
+        String = String + `
+        <h3>剩餘的像是轉回js格式，轉Json格式，還有DST(日光節約時間)，unix(跟世界協調時間差距秒數)，isBefore ， isAfter都可以去官網上了解</h3>
+        `
+        demo.innerHTML = String
+
+        let bbb = moment('11/5/2022 12:00:00 AM').format('LLLL')
+        console.log(bbb)
+    </script>
+</body>
+
+</html>

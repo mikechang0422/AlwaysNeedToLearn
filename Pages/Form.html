@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Style</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+
+<body>
+    <div class="warpper max_width">
+        <h1 class="uppercase text_center pb_5">form style</h1>
+        <form action="/">
+            <div class="top_tool">
+                <div class="search_area">
+                    <input type="search" name="q" placeholder="關鍵字搜尋" autocomplete="off">
+                    <input type="reset" value="重設">
+                    <input type="submit" value="搜尋">
+                </div>
+            </div>
+        </form>
+        <form action="/">
+        <section class="pb_5">
+                <table class="edit_table edit_td_table">
+                    <thead>
+                        <tr>
+                            <th class="title uppercase" colspan="4">
+                                <svg>
+                                    <circle cx="8" cy="8" r="3" stroke="#caca35" stroke-width="1" fill="#f3f4a1" />
+                                    Sorry, your browser does not support inline SVG.
+                                </svg>
+                                form list
+                            </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td class="capitalize title">text</td>
+                        <td>
+                            <input type="text" value="text value">
+                        </td>
+                        <td class="capitalize title">readonly</td>
+                        <td>
+                            <input type="text" value="text value" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">address</td>
+                        <td colspan="3">
+                            <input type="text" name="zipcode" style="width: 80px;" placeholder="郵政3碼" maxlength="5">
+                            <input type="text" name="street-address" value="708201 安平區永華路二段6號" placeholder="please inter your address" style="width: calc(100% - 84px);">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">tel</td>
+                        <td colspan="3">
+                            <input type="tel" name="phone" placeholder="please inter your tel" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">email</td>
+                        <td colspan="3">
+                            <input type="email" name="mail" placeholder="please inter your email" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">number</td>
+                        <td colspan="3">
+                            <input type="number" name="bday" min="1" step="1" style="width: 35px">
+                            <span class="capitalize">year</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">day time</td>
+                        <td colspan="3">
+                            <input type="date" disabled>
+                            <input type="time" readonly>
+                            <span style="vertical-align: -webkit-baseline-middle;"> or </span>
+                            <input type="datetime-local" name="datetimeLocal" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">upload pdf & excel</td>
+                        <td colspan="3">
+                            <input type="file" name="File" accept="application/pdf,application/vnd.ms-excel/vnd.ms-excel">
+                            <input class="btn" type="button" value="上傳">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">upload img</td>
+                        <td colspan="3">
+                            <input type="file" name="imgFile" accept="image/*">
+                            <input class="btn" type="button" value="上傳">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">upload multiple img</td>
+                        <td colspan="3">
+                            <label class="file_multiple"
+                                   for="image_uploads">
+                                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-hand-index-thumb" viewBox="0 0 16 16" style="transform:rotate(90deg);">
+                                    <path d="M6.75 1a.75.75 0 0 1 .75.75V8a.5.5 0 0 0 1 0V5.467l.086-.004c.317-.012.637-.008.816.027.134.027.294.096.448.182.077.042.15.147.15.314V8a.5.5 0 0 0 1 0V6.435l.106-.01c.316-.024.584-.01.708.04.118.046.3.207.486.43.081.096.15.19.2.259V8.5a.5.5 0 1 0 1 0v-1h.342a1 1 0 0 1 .995 1.1l-.271 2.715a2.5 2.5 0 0 1-.317.991l-1.395 2.442a.5.5 0 0 1-.434.252H6.118a.5.5 0 0 1-.447-.276l-1.232-2.465-2.512-4.185a.517.517 0 0 1 .809-.631l2.41 2.41A.5.5 0 0 0 6 9.5V1.75A.75.75 0 0 1 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
+                                </svg>
+                                請點此選擇上傳的圖片!
+                            </label>
+                            <input type="file"
+                                   id="image_uploads"
+                                   name="image_uploads"
+                                   accept=".jpg, .jpeg, .png"
+                                   multiple>
+                            <div class="img_list">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">select</td>
+                        <td>
+                            <select>
+                                <option value="">請選擇!~~~</option>
+                            </select>
+                            <select disabled>
+                                <option value="">請選擇!~~~</option>
+                            </select>
+                        </td>
+                        <td class="capitalize title">select</td>
+                        <td>
+                            <select multiple>
+                                <option value="">請選擇!~~~</option>
+                            </select>
+                            <select multiple disabled>
+                                <option value="">請選擇!~~~</option>
+                            </select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">datalist</td>
+                        <td>
+                            <input class="datalist" type="text" list="list">
+                            <datalist id="list">
+                                <option value="red">red</option>
+                                <option value="blue">blue</option>
+                                <option value="black">black</option>
+                            </datalist>
+                        </td>
+                        <td class="capitalize title">datalist multiple</td>
+                        <td>
+                            <input class="datalist_multiple" type="email" list="multipleList" multiple>
+                            <datalist id="multipleList">
+                                <option value="red">red</option>
+                                <option value="blue">blue</option>
+                                <option value="black">black</option>
+                            </datalist>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">chekbox</td>
+                        <td colspan="3">
+                            <label>
+                                <input type="checkbox" checked> A
+                            </label>
+                            <label>
+                                <input type="checkbox"> B
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">state</td>
+                        <td colspan="3">
+                            <input id="A" type="radio" name="A"> <label for="A">A</label>
+                            <input id="B" type="radio" name="A" checked> <label for="B">B</label>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <div class="tool text_center">
+                <input class="btn" type="submit" value="檢查">
+                <a class="btn" href="./index.html">回上一頁</a>
+            </div>
+        </form>
+    </div>
+    <script src="../Js/form.js"></script>
+</body>
+
+</html>

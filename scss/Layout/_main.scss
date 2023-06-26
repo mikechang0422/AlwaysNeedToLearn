@@ -1,0 +1,13 @@
+.warpper {
+    margin: 0 auto auto;
+    min-height: 100vh;
+
+    &.max_width {
+        margin: 10rem auto 0;
+        max-width: 960px;
+    }
+}
+
+main > section {
+    margin-top: 20px;
+}

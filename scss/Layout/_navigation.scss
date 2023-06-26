@@ -1,0 +1,156 @@
+$nav-height: 50px;
+
+// nav基本設定
+nav,
+.nav {
+    height: $nav-height;
+    background-color: $white;
+    border-bottom: 1px solid #333;
+
+    .logo {
+        padding: 6px;
+        width: $nav-height;
+        vertical-align: middle;
+        height: $nav-height;
+    }
+}
+
+// 漢堡樣式
+.nav_icon {
+    display: inline-block;
+    padding: 0 6px;
+    padding-top: 6px;
+    height: $nav-height;
+    cursor: pointer;
+
+    .line {
+        margin: 6px 0;
+        width: 35px;
+        height: 5px;
+        background-color: #333;
+        transition: $transition;
+    }
+
+    &.active {
+        .line:first-child {
+            transform: translate(0, 11px) rotate(-45deg);
+        }
+
+        .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .line:nth-child(3) {
+            transform: translate(0, -11px) rotate(45deg);
+        }
+    }
+
+    @include view-md-up {
+        display: none;
+    }
+}
+
+.nav {
+    // 位於頂部
+    &.top {
+        .nav_header {
+            width: 100%;
+
+            @include view-md-up {
+                display: inline-block;
+                width: auto;
+            }
+        }
+
+        .nav_body {
+            width: 100%;
+
+            li {
+                &:first-child {
+                    border-left: 1px solid;
+                }
+
+                &:last-child {
+                    border-right: 1px solid;
+                }
+
+                + li {
+                    border-left: 1px solid;
+                }
+            }
+
+            a {
+                display: inline-block;
+                padding: 0 6px;
+                height: $nav-height;
+                line-height: $nav-height;
+            }
+
+            @include view-md-up {
+                display: inline-block;
+                width: auto;
+            }
+        }
+    }
+
+    // float方式排版
+    &.float {
+        .nav_header {
+            &::after {
+                display: block;
+                clear: both;
+                height: 0;
+                visibility: hidden;
+                content: "";
+                line-height: 0;
+            }
+
+            @include view-md-up {
+                float: left;
+            }
+        }
+
+        .logo {
+            float: left;
+        }
+
+        .nav_icon {
+            float: right;
+        }
+
+        .nav_body {
+            display: none;
+
+            ul {
+                &::after {
+                    display: block;
+                    clear: both;
+                    height: 0;
+                    visibility: hidden;
+                    content: "";
+                    line-height: 0;
+                }
+            }
+
+            li {
+                @include view-md-up {
+                    float: left;
+                }
+            }
+
+            @include view-md-up {
+                display: inline-block;
+                float: left;
+            }
+
+            &.active {
+                display: block;
+            }
+        }
+    }
+
+    // flex排版
+    &.flex {
+        display: flex;
+    }
+}

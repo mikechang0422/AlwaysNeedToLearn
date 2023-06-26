@@ -1,4 +1,4 @@
-// 針對RWD設計三種尺寸
+// 針對RWD切換三種尺寸 (如要影響須把下方heigh & line-height 註解掉
 @include btn-height(40px);
 
 @include view-md-up {
@@ -13,24 +13,36 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
-a {
-    &.btn {
-        display: inline-block;
-        padding: 0 12px;
-        color: $btn-color;
-        background-color: $btn-bg;
-        border: 1px solid;
-        outline: none;
-        transition: $transiton;
-        cursor: pointer;
-        font-weight: 400;
-        vertical-align: middle;
+button.btn,
+input[type="submit"].btn,
+input[type="reset"].btn,
+input[type="button"].btn,
+a.btn {
+    display: inline-block;
+    padding: 0 12px;
+    height: $btn-height;
+    color: $btn-color;
+    background-color: $btn-bg;
+    border: 1px solid;
+    outline: none;
+    transition: $transition;
+    line-height: $btn-height;
+    cursor: pointer;
+    font-weight: 700;
+    vertical-align: middle;
 
-        &:hover,
-        &:active,
-        &:focus {
-            color: lighten($btn-color, 10%);
-            background-color: darken($btn-bg, 10%);
-        }
+    &:hover,
+    &:active,
+    &:focus {
+        color: lighten($btn-color, 10%);
+        background-color: darken($btn-bg, 10%);
+    }
+
+    &.disabled,
+    &:disabled {
+        color: $disabled-color;
+        background-color: $disabled-bg-color;
+        border-color: $disabled-border-color;
+        cursor: no-drop;
     }
 }

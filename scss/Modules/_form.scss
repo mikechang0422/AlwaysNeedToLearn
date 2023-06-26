@@ -1,3 +1,7 @@
+$icon-size: 15px;
+$vertical-align: middle;
+
+// 針對RWD切換三種尺寸 (如要影響須把下方heigh 註解掉
 @include input-height(40px);
 
 @include view-md-up {
@@ -6,4 +10,210 @@
 
 @include view-xl-up {
     @include input-height(32px);
+}
+
+input[type="text"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="time"],
+input[type="week"],
+input[type="month"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="file"],
+select {
+    padding: 0 6px;
+    height: $input-height;
+    border: 1px solid $input-border;
+
+    &:focus,
+    &:focus-visible {
+        outline-color: $input-outline-hover;
+        color: $input-outline-hover;
+    }
+
+    &.disabled,
+    &:disabled {
+        color: $disabled-color;
+        background-color: $disabled-bg-color;
+        border-color: $disabled-border-color;
+        cursor: no-drop;
+    }
+
+    &[type="text"]:read-only {
+        background-color: $disabled-bg-color;
+        border-color: $disabled-border-color;
+    }
+
+    &::placeholder {
+        text-transform: capitalize;
+        color: $placeholder;
+        font-weight: normal;
+    }
+}
+
+input {
+    display: inline-block;
+    background-color: $white;
+    vertical-align: $vertical-align;
+
+    &[type="text"],
+    &[type="password"],
+    &[type="number"],
+    &[type="email"] {
+        width: 100%;
+    }
+
+    // 清除數字右方上下箭頭
+    &[type="number"] {
+        @extend %appearance;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            @extend %appearance;
+        }
+    }
+
+    &[type="file"] {
+        padding: 3px 6px;
+        width: 300px;
+    }
+
+    &[type="radio"],
+    &[type="checkbox"] {
+        width: $icon-size;
+        height: $icon-size;
+        border: 0;
+        border-radius: 3px;
+        outline: 0;
+        vertical-align: $vertical-align;
+        cursor: pointer;
+
+        @extend %appearance;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    &[type="checkbox"] {
+        background: url(../images/checkbox.svg) center center no-repeat #fff;
+
+        &:checked {
+            background: url(../images/checkbox-checked.svg) center center no-repeat #fff;
+        }
+    }
+
+    &[type="radio"] {
+        background: url(../images/radio.svg) center center no-repeat #fff;
+        transform: translateY(-2px);
+
+        &:checked {
+            background: url(../images/radio-checked.svg) center center no-repeat #fff;
+        }
+    }
+
+    &.datalist,
+    &.datalist_multiple {
+        @extend %appearance;
+    }
+
+    &.ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+select {
+    @extend %appearance;
+
+    padding: 0 40px 0 6px;
+    background: url(../images/selectArrow-dark.svg) center right no-repeat #fff;
+
+    &.disabled,
+    &:disabled {
+        background: url(../images/selectArrow-disabled.svg) center right no-repeat #fff;
+        background-color: $disabled-bg-color;
+    }
+
+    &[multiple] {
+        background: #fff;
+    }
+
+    &[multiple].disabled,
+    &[multiple]:disabled {
+        background: $disabled-bg-color;
+    }
+}
+
+// 自訂檔案上傳樣式
+.file_multiple {
+    display: inline-block;
+    padding: 0 6px;
+    width: 200px;
+    height: $input-height;
+    color: $white;
+    background: $thired-color;
+    border: 1px solid $input-border;
+    vertical-align: $vertical-align;
+    line-height: $input-height;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: $primary-color;
+    }
+}
+
+// 圖片檢視
+.img_list {
+    ul {
+        padding: 10px 0;
+    }
+
+    li {
+        display: flex;
+        padding: 3px;
+        width: 100%;
+        border: 1px solid $input-border;
+
+        p {
+            display: inline-block;
+            padding: 0 6px;
+            margin-right: 6px;
+            width: 80%;
+            color: $font-color;
+            word-break: break-all;
+            border-right: 1px solid $input-border;
+        }
+
+        .img_box {
+            width: 20%;
+
+            img {
+                border-left: 0;
+            }
+        }
+
+        + li {
+            border-top: 0;
+        }
+    }
+
+    input[type="submit"] {
+        margin-left: 5px;
+    }
+}
+
+label {
+    display: inline-block;
+    vertical-align: $vertical-align;
+    cursor: pointer;
 }

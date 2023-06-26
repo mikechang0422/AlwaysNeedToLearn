@@ -1,29 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table Style</title>
     <link rel="stylesheet" href="../style/style.css">
-    <style>
-        .warpper {
-            max-width: 960px;
-            margin: 10rem auto 2rem auto;
-        }
-    </style>
 </head>
+
 <body>
-    <div class="warpper">
+    <div class="warpper max_width">
         <h1 class="uppercase text_center pb_5">table style</h1>
-        <section class="text_center pb_5">
-            <h2>admin-table</h2>
-            <table class="admin_table">
+        <section class="pb_5">
+            <h2 class="text_center">admin-table</h2>
+            <table class="admin_table text_center">
                 <thead>
                     <tr>
                         <th class="uppercase">id</th>
-                        <th class="uppercase">name</th>
-                        <th class="uppercase">phone</th>
+                        <th class="uppercase">
+                            name
+                            <a class="sorting-top" href="javascript:void(0)"></a>
+                            <a class="sorting-down" href="javascript:void(0)"></a>
+                        </th>
+                        <th class="uppercase">
+                            phone
+                            <a href="javascript:void(0)">                                
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-up-fill vertial-bottom" viewBox="0 0 16 16">
+                                    <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+                                </svg>
+                            </a>
+                            <a href="javascript:void(0)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill vertial-bottom" viewBox="0 0 16 16">
+                                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                                </svg>
+                            </a>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,33 +45,230 @@
                         <td>09123456789</td>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>使用者A</td>
+                        <td>2</td>
+                        <td>使用者B</td>
                         <td>09123456789</td>
                     </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>使用者C</td>
+                        <td>09123456789</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>使用者D</td>
+                        <td>09123456789</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="pb_5">
+            <h2 class="text_center">block-table</h2>
+            <table class="admin_table block_table text_center">
+                <thead>
+                    <tr>
+                        <th class="uppercase">id</th>
+                        <th class="uppercase">name</th>
+                        <th class="uppercase">phone</th>
+                        <th class="uppercase">address</th>
+                        <th class="uppercase" style="min-width: 100vw;">picusm</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr>
                         <td>1</td>
                         <td>使用者A</td>
                         <td>09123456789</td>
+                        <td>813 高雄市左營區海功東路17號</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus repudiandae non nostrum vitae quas, iste, numquam architecto harum vero aperiam excepturi neque minus molestiae nulla expedita nihil itaque facere? Nesciunt.</td>
                     </tr>
-                    <tr class="odd">
-                        <td>1</td>
-                        <td>使用者A</td>
+                    <tr>
+                        <td>2</td>
+                        <td>使用者B</td>
                         <td>09123456789</td>
+                        <td>326 桃園市楊梅區賦梅路19號</td>
+                        <td class="wrap">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam vel ducimus voluptatum. Non corporis expedita vero suscipit et odio delectus odit! Dolores illum voluptates impedit asperiores officia magnam reprehenderit, omnis saepe laboriosam tempora nam a ullam adipisci, aperiam vel nulla!</td>
                     </tr>
-
+                    <tr>
+                        <td>3</td>
+                        <td>使用者C</td>
+                        <td>09123456789</td>
+                        <td>827 高雄市彌陀區民權街22號</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat animi magnam quod adipisci! Animi perferendis aliquid tempora illum sed? Excepturi!</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>使用者D</td>
+                        <td>09123456789</td>
+                        <td>927 屏東縣林邊鄉成功路14號</td>
+                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates eos facilis ducimus odio sapiente beatae delectus nobis minima libero, rerum deleniti, sunt eum reiciendis. Beatae quasi deserunt nobis similique mollitia!</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
-        <section class="text_center pb_5">
-            <h2>edit-table</h2>
-            <table class="edit_table">
-                <tr>
-                    <th class="capitalize">id</th>
-                    <td></td>
-                    <th class="capitalize">name</th>
-                    <td></td>
-                </tr>
+        <section class="pb_5" >
+            <h2 class="text_center">sticky-table</h2>
+            <table class="admin_table block_table sticky_table" style="height: 200px;">
+                <thead>
+                    <tr>
+                        <th class="uppercase sticky_left">id</th>
+                        <th class="uppercase">name</th>
+                        <th class="uppercase">phone</th>
+                        <th class="uppercase">loram</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="sticky_left">1</td>
+                        <td>使用者A</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">2</td>
+                        <td>使用者B</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">3</td>
+                        <td>使用者C</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">4</td>
+                        <td>使用者D</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">5</td>
+                        <td>使用者E</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">6</td>
+                        <td>使用者F</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">7</td>
+                        <td>使用者G</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">8</td>
+                        <td>使用者H</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">9</td>
+                        <td>使用者I</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                    <tr>
+                        <td class="sticky_left">10</td>
+                        <td>使用者J</td>
+                        <td>09123456789</td>
+                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia recusandae blanditiis libero, fuga eaque, perspiciatis consequatur culpa itaque repellendus natus asperiores esse voluptatibus assumenda iste rem cum soluta eum.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="pb_5">
+            <h2 class="text_center">edit-table</h2>
+            <table class="edit_table edit_td_table">
+                <thead>
+                    <tr>
+                        <th class="title uppercase" colspan="4">
+                            <svg>
+                                <circle cx="8" cy="8" r="3" stroke="#caca35" stroke-width="1" fill="#f3f4a1" />
+                                Sorry, your browser does not support inline SVG.
+                            </svg>
+                            edit table
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="capitalize title">id</td>
+                        <td>89757</td>
+                        <td class="capitalize title">name</td>
+                        <td>Duke</td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">height</td>
+                        <td>180cm</td>
+                        <td class="capitalize title">weight</td>
+                        <td>80kg</td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">picture</td>
+                        <td colspan="3">
+                            <img class="img_fluid" src="https://picsum.photos/200/200?random=13" alt="picture">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">creat time</td>
+                        <td></td>
+                        <td class="capitalize title">update time</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="pb_5">
+            <h2 class="text_center">td-table</h2>
+            <table class="edit_table edit_td_table">
+                <thead>
+                    <tr>
+                        <th class="title uppercase" colspan="4">
+                            <svg>
+                                <circle cx="8" cy="8" r="3" stroke="#caca35" stroke-width="1" fill="#f3f4a1" />
+                                Sorry, your browser does not support inline SVG.
+                            </svg>
+                            td table
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="td_table">
+                            <table class="edit_list">
+                                <tr>
+                                    <td class="title">edit_list</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quas quisquam rem earum praesentium voluptates amet ut vel officiis dicta magnam architecto suscipit explicabo sunt laborum, ullam corporis illo eos.</td>
+                                </tr>
+                                <tr>
+                                    <td class="title capitalize">img</td>
+                                    <td>
+                                        <img class="vertial-top" src="https://picsum.photos/200/200?random=1" alt="">
+                                    </td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td class="title">table2</td>
+                                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quas quisquam rem earum praesentium voluptates amet ut vel officiis dicta magnam architecto suscipit explicabo sunt laborum, ullam corporis illo eos.</td>
+                                </tr>
+                                <tr>
+                                    <td class="title capitalize">img</td>
+                                    <td>
+                                        <img class="vertial-top" src="https://picsum.photos/200/200?random=1" alt="">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </section>
 
@@ -67,7 +276,6 @@
             <a class="btn" href="./index.html">回上一頁</a>
         </div>
     </div>
-    <script src="../Js/loading.js"></script>
 </body>
 
 </html>

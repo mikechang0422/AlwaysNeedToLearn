@@ -178,3 +178,12 @@
         margin-left: ($i * 5px);
     }
 }
+
+// width
+@for $i from 1 through 4 {
+    $i: $i * 25;
+
+    .w#{$i} {
+        width: $i * 1% !important;
+    }
+}

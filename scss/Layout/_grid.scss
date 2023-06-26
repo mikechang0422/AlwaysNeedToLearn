@@ -36,28 +36,28 @@ $phone-max: 479px;
 }
 
 // (小PC + LabTop) 寬度 1441px 以下執行
-@mixin view-xl-dowm {
+@mixin view-xl-down {
     @media (max-width: $pc-max) {
         @content;
     }
 }
 
 // (LabTop + PAD + MOBILE) 寬度 1201px 以下執行
-@mixin view-lg-dowm {
+@mixin view-lg-down {
     @media (max-width: $labtop-max) {
         @content;
     }
 }
 
 // (PAD + MOBILE) 寬度 767px 以下執行
-@mixin view-md-dowm {
+@mixin view-md-down {
     @media (max-width: $pad-max) {
         @content;
     }
 }
 
 // (MOBILE) 寬度 479px 以下執行
-@mixin view-sm-dowm {
+@mixin view-sm-down {
     @media (max-width: $phone-max) {
         @content;
     }

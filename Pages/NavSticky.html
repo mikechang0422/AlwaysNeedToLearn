@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav Style</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <style>
+        .header {
+            position: sticky;
+            top: 0;
+        }
+
+        .header .nav,
+        .header .nav a{
+            transition: 1s;
+        }
+
+
+        .header.sticking .nav {
+            background-color: bisque;
+            transition: 1s;
+        }
+        
+        .header.sticking .nav a {
+            color: cornflowerblue;
+            transition: 1s;
+        }
+
+        .main {
+            padding: 6px;
+        }
+
+        .main .title {
+            margin-top: 2rem;
+        }
+
+        .main .txt {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warpper">
+        <header class="header">
+            <nav class="nav top float">
+                <div class="nav_header">
+                    <div class="logo">
+                        <a href="javascript:void(0)">
+                            <img class="img_fluid" src="https://fakeimg.pl/200x200/?retina=1&text=Logo&font=noto" alt="">
+                        </a>
+                    </div>
+                    <i class="nav_icon">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </i>
+                </div>
+                <div class="nav_body">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)">link A left</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">link B left</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">link C left</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="main">
+            <h2 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, voluptatum.</h2>
+            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptates eum excepturi id at vel tempora, aut cum recusandae non suscipit ipsa assumenda velit, veritatis omnis eveniet, laborum autem quas.</p>
+            <h2 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, voluptatum.</h2>
+            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptates eum excepturi id at vel tempora, aut cum recusandae non suscipit ipsa assumenda velit, veritatis omnis eveniet, laborum autem quas.</p>
+            <h2 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, voluptatum.</h2>
+            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptates eum excepturi id at vel tempora, aut cum recusandae non suscipit ipsa assumenda velit, veritatis omnis eveniet, laborum autem quas.</p>
+            <h2 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, voluptatum.</h2>
+            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptates eum excepturi id at vel tempora, aut cum recusandae non suscipit ipsa assumenda velit, veritatis omnis eveniet, laborum autem quas.</p>
+            <h2 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, voluptatum.</h2>
+            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptates eum excepturi id at vel tempora, aut cum recusandae non suscipit ipsa assumenda velit, veritatis omnis eveniet, laborum autem quas.</p>
+            <h2 class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis, voluptatum.</h2>
+            <p class="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta voluptates eum excepturi id at vel tempora, aut cum recusandae non suscipit ipsa assumenda velit, veritatis omnis eveniet, laborum autem quas.</p>
+        </main>
+    </div>
+    <script src="../Js/navSticky.js"></script>
+
+</body>
+
+</html>

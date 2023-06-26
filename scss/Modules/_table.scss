@@ -1,8 +1,30 @@
-.admin_table {
+table {
     width: 100%;
     background-color: $white;
     border: 1px solid $td-border-color;
 
+    &.th_center {
+        th {
+            text-align: center;
+        }
+    }
+
+    &.td_center {
+        td {
+            text-align: center;
+        }
+    }
+
+    tr {
+        background-color: $white;
+    }
+
+    img {
+        vertical-align: top;
+    }
+}
+
+.admin_table {
     tr {
         &:nth-child(odd) {
             background-color: $table-tr-odd-bg-color;
@@ -10,7 +32,7 @@
 
         &:hover {
             background-color: $table-tr-bg-hover;
-            transition: $transiton;
+            transition: $transition;
 
             td {
                 border-bottom-color: desaturate(darken($table-tr-bg-hover, 20), 35);
@@ -22,16 +44,28 @@
 
             &:hover {
                 background-color: $table-tr-bg-hover;
-                transition: $transiton;
+                transition: $transition;
             }
         }
     }
 
     th {
+        $th-color: $white;
+
         padding: 7px;
-        color: $white;
+        color: $th-color;
         background-color: $table-border-color;
         border: 1px solid $th-border-color;
+
+        a {
+            color: $th-color;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: darken($th-color, 10%);
+            }
+        }
     }
 
     td {
@@ -40,9 +74,161 @@
         border: 1px solid $td-border-color;
     }
 
-    &.th_center {
-        th {
-            text-align: center;
+    a {
+        &.sorting-top {
+            @extend %icon-sorting;
+
+            background: url(../images/icon-sortingTop.svg) center center no-repeat transparent;
+        }
+
+        &.sorting-down {
+            @extend %icon-sorting;
+
+            background: url(../images/icon-sortingDown.svg) center center no-repeat transparent;
+        }
+    }
+}
+
+.block_table {
+    display: block;
+    overflow: scroll;
+    overflow-y: auto;
+
+    td {
+        text-align: left;
+        white-space: nowrap;
+
+        &.wrap {
+            white-space: normal;
+        }
+    }
+}
+
+.sticky_table {
+    border-collapse: separate;
+    border-spacing: 0;
+
+    thead th {
+        position: sticky;
+        top: 0;
+        z-index: 1110;
+
+        &.sticky_left {
+            z-index: 1120;
+            background-color: $table-border-color;
+        }
+    }
+
+    .sticky_left {
+        position: sticky;
+        left: 0;
+        z-index: 1100;
+        background-color: inherit;
+    }
+}
+
+.edit_table {
+    th {
+        padding: 10px 7px;
+        color: $white;
+        background-color: $table-border-color;
+        border: 1px solid $th-border-color;
+
+        &.title {
+            text-align: left;
+
+            svg {
+                display: inline-block;
+                padding-left: 21px;
+                width: 16px;
+                height: 16px;
+                box-sizing: content-box;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    td {
+        padding: 7px;
+        color: $font-color;
+        background-color: $white;
+        border: 1px solid $td-border-color;
+
+        &.title {
+            width: 175px;
+            background-color: $table-th-bg-color;
+
+            + td {
+                width: calc(50% - 175px);
+            }
+        }
+
+        input {
+            &[type="text"] + input [type="submit"],
+            &[type="text"] + input [type="button"],
+            &[type="text"] + input [type="reset"],
+            &[type="file"] + input [type="submit"],
+            &[type="file"] + input [type="button"],
+            &[type="file"] + input [type="reset"] {
+                vertical-align: top;
+            }
+        }
+    }
+}
+
+// 第二層table排版
+.edit_td_table {
+    td.td_table {
+        padding: 0;
+    }
+}
+
+.td_table {
+    > table {
+        margin: -1px;
+        width: calc(100% + 2px);
+
+        td {
+            padding: 7px;
+            transition: $transition;
+
+            &.title {
+                background-color: $white;
+            }
+        }
+
+        ol {
+            padding-left: 21px;
+
+            li {
+                list-style: decimal;
+            }
+        }
+
+        ul {
+            padding-left: 21px;
+
+            li {
+                list-style: disc;
+            }
+        }
+
+        // 編輯中狀態
+        &.edit_list {
+            td {
+                background-color: lighten($table-tr-bg-hover, 1);
+
+                &.title {
+                    color: $thired-color;
+                    background-color: lighten($table-tr-bg-hover, 1);
+                }
+            }
+        }
+
+        &:hover {
+            td {
+                background-color: $table-tr-bg-hover;
+            }
         }
     }
 }
