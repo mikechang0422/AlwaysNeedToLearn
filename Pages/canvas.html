@@ -41,8 +41,8 @@
             // 顯示2D
             const ctx = canvasRect.getContext('2d')
             // 建立canvas 畫布預設 300px*150px 因為canvas設定windth:100%因此畫面的100% = 畫布的600
-            canvasRect.width = 600
-            canvasRect.height = 600
+            canvasRect.width = 300
+            canvasRect.height = 300
             // 畫筆顏色
             ctx.fillStyle = "#f00";
             // fillRect = 矩形
@@ -52,7 +52,11 @@
             // 線條(起點)
             ctx.moveTo(150,0)
             // 線條(終點)
-            ctx.lineTo(300,100)
+            ctx.lineTo(225,100)
+            // 線條粗細
+            ctx.lineWidth = 2
+            // 倒角 有butt round square三種,預設butt
+            ctx.lineCap = 'round'
             // 繪製
             ctx.stroke()
             
