@@ -11,6 +11,7 @@
             border: 1px solid #333;
             padding: 6px;
             width: 100%;
+            background-color: #fff;
         }
     </style>
 </head>
@@ -20,17 +21,23 @@
         <section class="canvas_block mb_4">
             <canvas id="canvasRect" class="canvas"></canvas>
         </section>
+        <section class="canvas_block" id="showTxtBlock">
+            <canvas id="txtCanvas" class="canvas"></canvas>
+        </section>
+        <section class="canvas_block" id="showImgBlock">
+            <canvas id="imgCanvas" class="canvas"></canvas>
+            <img id="img" src="../Images/casul_600x150_01.png" style="display: none;">
+        </section>
         <section class="canvas_block">
             <canvas id="Canvas" class="canvas"></canvas>
-            <img id="canvasImg" src="../Images/S__60416004.jpg" style="display: none;">
+            <div class="img_block"></div>
         </section>
-        <section id="showImgBlock">
-
+        <section class="canvas_block">
+            <canvas id="clockCanvas" class="canvas"></canvas>
         </section>
-        <div class="tool text_center">
+        <div class="tool text_center mx_5">
             <a id="jpgBtn" class="btn" href="javascript:;" download="">下載jpg</a>
         </div>
-
         <div class="tool text_center">
             <a class="btn" href="./index.html">回上一頁</a>
         </div>
@@ -60,17 +67,122 @@
             // 繪製
             ctx.stroke()
             
+            // 圓弧
             ctx.strokeStyle = "#faa"
             // 設計路徑
             ctx.beginPath()
             // 弧線 X,Y,半徑,角度
-            ctx.arc(150, 50, 50, 0, 2 * Math.PI)
-            ctx.stroke();
-        }
+            ctx.arc(150, 50, 49, 0, 2 * Math.PI)
+            ctx.stroke()
+            
+            // 如果沒有中斷就繼續寫下一個則會自動連起來，可以看到正常應該arc中間需要再寫一個LINE才能連但實際圖不用
+            ctx.beginPath()
+            ctx.strokeStyle = "#0AA"
+            ctx.arc(150, 50, 40, 0, 2* Math.PI)
+            ctx.arc(150, 50, 30, 0, Math.PI)
+            ctx.lineTo(110,50)
+            ctx.stroke()
 
+            ctx.beginPath()
+            ctx.strokeStyle = "#ff0"
+            ctx.arc(150, 50, 40, 0, Math.PI)
+            ctx.stroke()
+            
+            // 多邊形(長方形) 可以看到其實就是多條LINE組合出來的
+            ctx.strokeStyle = "#faf"
+            ctx.lineWidth = 1
+            ctx.beginPath()
+            ctx.moveTo(225,10)
+            ctx.lineTo(225,100)
+            ctx.lineTo(290,100)
+            ctx.lineTo(290,10)
+            ctx.lineTo(225,10)
+            ctx.stroke()
+
+            // 多邊形(三角形)
+            ctx.strokeStyle = "#aaf"
+            ctx.beginPath()
+            ctx.moveTo(60,110)
+            ctx.lineTo(10,160)
+            ctx.lineTo(110,160)
+            ctx.lineTo(60,110)
+            ctx.stroke()
+
+            // 一次繪製多個
+            ctx.strokeStyle = "#afa"
+            ctx.beginPath()
+            // 第一個
+            ctx.moveTo(145,110)
+            ctx.lineTo(120,160)
+            ctx.lineTo(170,160)
+            ctx.lineTo(145,110)
+            // 第二個
+            ctx.moveTo(120,110)
+            ctx.lineTo(170,110)
+            ctx.lineTo(170,160)
+            ctx.lineTo(120,160)
+            ctx.lineTo(120,110)
+            ctx.stroke()
+            
+            // 矩形 rect(X,Y,寬,高)
+            ctx.strokeStyle = "#aff"
+            ctx.beginPath()
+            ctx.rect(180,110,40,40)
+            ctx.stroke()
+
+            // 漸進色原理 設置一個顏色變數並套用
+            // 線性漸進 createLinearGradient(x,y,x1,y1)
+            const grd = ctx.createLinearGradient(0, 0, 150, 0);
+            grd.addColorStop(0, "red");
+            grd.addColorStop(1, "blue");
+            ctx.fillStyle = grd;
+            ctx.fillRect(10, 210, 150, 80);
+            
+            // 圓形漸進 createRadialGradient(x,y,r,x1,y1,r1) 第一個圓x,y,r跟第二個圓x1,y1,r1 中間過程就是漸變過程
+            const grd2 = ctx.createRadialGradient(230, 250, 10, 230, 250, 35);
+            grd2.addColorStop(0, "red");
+            grd2.addColorStop(1, "green");
+
+            // Fill with gradient
+            ctx.fillStyle = grd2;
+            ctx.fillRect(170, 210, 120, 80);
+        }
         canvasOneHandler()
 
-        function canvasTwoHandler (){
+        function txtCanvas (){
+            const canvas = document.querySelector('#txtCanvas')
+            const ctx = canvas.getContext('2d')
+            // 文字尺寸&樣式
+            ctx.font = '30px Arial'
+            // 文字顏色
+            ctx.fillStyle = "blue"
+            // 排列位置 如果沒有設定寬度則會以起始位置算中間
+            ctx.textAlign = "left"
+            // 實心字
+            ctx.fillText('Hello World1', 10, 50)
+            ctx.fillText('Hello World2', (canvas.width / 3), (canvas.height - (canvas.height / 10)))
+            // 簍空
+            ctx.strokeText("Hello World3", 10, 100);
+        }
+        txtCanvas()
+
+        function imgCanvas (){
+            const canvas = document.querySelector('#imgCanvas')
+            const ctx = canvas.getContext('2d')
+            const img = document.querySelector('#img')
+            // load圖片需要時間,如果直接讓他跑會有抓不到的問題
+            img.addEventListener('load', function(){
+                // 畫布尺寸
+                ctx.canvas.width = img.width
+                ctx.canvas.height = img.height
+                // 圖片顯示尺寸
+                ctx.drawImage(img, 0, 0, img.width, img.height)
+                
+            })
+        }
+        imgCanvas()
+
+        function canvasImgHandler (){
             const canvas = document.querySelector('#Canvas')
             const ctx = canvas.getContext('2d')
 
@@ -78,19 +190,11 @@
             const imageObj = new Image()
             // 圖片未出現前會報錯誤因此要等圖片出現才能寫入
             imageObj.addEventListener('load', function(){
-                // 畫布尺寸
                 ctx.canvas.width = imageObj.width
                 ctx.canvas.height = imageObj.height
-                // 圖片顯示尺寸
-                ctx.drawImage(imageObj, 0, 0,imageObj.width,imageObj.height)
-            // let pngData = canvas.toDataURL('image/png')
-            // const pngImg = new Image()
-            // pngImg.src = pngData
-            // document.querySelector('#showImgBlock').appendChild(pngImg)
+                ctx.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height)
     
-            }, false)
-            imageObj.src = '../Images/S__60416004.jpg'
-
+            // 因為有loading動作因此後續相關也要等loading完才能執行
             // 文字部分
             ctx.font = '30px 微軟正黑體'
             ctx.textAlign = 'left' //對齊方向
@@ -109,7 +213,7 @@
             gradient.addColorStop("1.0", "red");
             ctx.strokeStyle = gradient;
             ctx.strokeText("漸變色簍空字", 10, 105)
-    
+            
             // 下載
             let jpgData = canvas.toDataURL('image/jpg')
             const jpgBtn = document.querySelector('#jpgBtn')
@@ -120,10 +224,79 @@
             let pngData = canvas.toDataURL('image/png')
             const pngImg = new Image()
             pngImg.src = pngData
-            document.querySelector('#showImgBlock').appendChild(pngImg)
+            document.querySelector('.img_block').appendChild(pngImg)
+            }, false)
+            imageObj.src = '../Images/casul_600x150_01.png'
+        }
+        canvasImgHandler()
+
+        function clockCanvas (){
+            document.querySelector('#clockCanvas.canvas').style.cssText = 'background-color: #333;max-width: 300px; max-height: 300px;'
+            const canvas = document.querySelector('#clockCanvas')
+            const ctx = canvas.getContext('2d')
+            canvas.width = 300
+            canvas.height = 300
+            
+            let radius = canvas.height / 2
+            // 移動畫布 translate(x,y) 移動以後x,y就會變成新的0,0
+            ctx.translate(radius, radius)
+            radius = radius * 0.9
+            drawClock(ctx,radius)
+        }
+        clockCanvas()
+
+        function drawClock (ctx,radius){
+            // 牆面的底
+            ctx.arc(0, 0, radius, 0 , 2 * Math.PI)
+            ctx.fillStyle = 'white'
+            ctx.fill()
+
+            drawFace(ctx, radius)
+            drawNumbers(ctx, radius)
         }
 
-        canvasTwoHandler()
+        function drawFace(ctx, radius) {
+            const grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
+            grad.addColorStop(0, '#333');
+            grad.addColorStop(0.5, 'white');
+            grad.addColorStop(1, '#333');
+            
+            // 時鐘的底
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = 'white';
+            ctx.fill();
+            
+            // 外圈框限
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = radius*0.1;
+            ctx.stroke();
+
+            // 內圈點點
+            ctx.beginPath();
+            ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+            ctx.fillStyle = '#333';
+            ctx.fill();
+        }
+
+        function drawNumbers(ctx, radius) {
+            ctx.font = radius * 0.15 + "px arial";
+            ctx.textBaseline = "middle";
+            ctx.textAlign = "center";
+            for(let num = 1; num < 13; num++){
+                let ang = num * Math.PI / 6;
+                ctx.rotate(ang);
+                ctx.translate(0, -radius * 0.85);
+                ctx.rotate(-ang);
+                ctx.fillText(num.toString(), 0, 0);
+                ctx.rotate(ang);
+                ctx.translate(0, radius * 0.85);
+                ctx.rotate(-ang);
+            }
+        }
+
+        // 目前做到這，明天接續完成
+        // https://www.w3schools.com/graphics/canvas_clock_numbers.asp
     </script>
 </body>
 
