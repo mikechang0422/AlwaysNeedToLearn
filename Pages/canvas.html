@@ -32,9 +32,6 @@
             <canvas id="Canvas" class="canvas"></canvas>
             <div class="img_block"></div>
         </section>
-        <section class="canvas_block">
-            <canvas id="clockCanvas" class="canvas"></canvas>
-        </section>
         <div class="tool text_center mx_5">
             <a id="jpgBtn" class="btn" href="javascript:;" download="">下載jpg</a>
         </div>
@@ -229,74 +226,6 @@
             imageObj.src = '../Images/casul_600x150_01.png'
         }
         canvasImgHandler()
-
-        function clockCanvas (){
-            document.querySelector('#clockCanvas.canvas').style.cssText = 'background-color: #333;max-width: 300px; max-height: 300px;'
-            const canvas = document.querySelector('#clockCanvas')
-            const ctx = canvas.getContext('2d')
-            canvas.width = 300
-            canvas.height = 300
-            
-            let radius = canvas.height / 2
-            // 移動畫布 translate(x,y) 移動以後x,y就會變成新的0,0
-            ctx.translate(radius, radius)
-            radius = radius * 0.9
-            drawClock(ctx,radius)
-        }
-        clockCanvas()
-
-        function drawClock (ctx,radius){
-            // 牆面的底
-            ctx.arc(0, 0, radius, 0 , 2 * Math.PI)
-            ctx.fillStyle = 'white'
-            ctx.fill()
-
-            drawFace(ctx, radius)
-            drawNumbers(ctx, radius)
-        }
-
-        function drawFace(ctx, radius) {
-            const grad = ctx.createRadialGradient(0, 0 ,radius * 0.95, 0, 0, radius * 1.05);
-            grad.addColorStop(0, '#333');
-            grad.addColorStop(0.5, 'white');
-            grad.addColorStop(1, '#333');
-            
-            // 時鐘的底
-            ctx.beginPath();
-            ctx.arc(0, 0, radius, 0, 2 * Math.PI);
-            ctx.fillStyle = 'white';
-            ctx.fill();
-            
-            // 外圈框限
-            ctx.strokeStyle = grad;
-            ctx.lineWidth = radius*0.1;
-            ctx.stroke();
-
-            // 內圈點點
-            ctx.beginPath();
-            ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
-            ctx.fillStyle = '#333';
-            ctx.fill();
-        }
-
-        function drawNumbers(ctx, radius) {
-            ctx.font = radius * 0.15 + "px arial";
-            ctx.textBaseline = "middle";
-            ctx.textAlign = "center";
-            for(let num = 1; num < 13; num++){
-                let ang = num * Math.PI / 6;
-                ctx.rotate(ang);
-                ctx.translate(0, -radius * 0.85);
-                ctx.rotate(-ang);
-                ctx.fillText(num.toString(), 0, 0);
-                ctx.rotate(ang);
-                ctx.translate(0, radius * 0.85);
-                ctx.rotate(-ang);
-            }
-        }
-
-        // 目前做到這，明天接續完成
-        // https://www.w3schools.com/graphics/canvas_clock_numbers.asp
     </script>
 </body>
 
