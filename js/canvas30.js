@@ -4,11 +4,11 @@ function drawDay1() {
     canvas.height = 500
     const ctx = canvas.getContext('2d')
     // 你的空白畫布盡情揮灑空間
-    
+
     // 填滿色的正方形
     ctx.fillStyle = '#e5ffcc'
     ctx.fillRect(50,150,100,100)
-    
+
     ctx.fillStyle = '#333'
     ctx.fillRect(25,300,450,400)
 
@@ -122,7 +122,7 @@ function drawDay2() {
     // 畫線顏色
     ctx.strokeStyle = '#F00B77'
     ctx.stroke()
-    
+
     ctx.beginPath()
     ctx.lineWidth = 5
     ctx.moveTo(200, 100)
@@ -295,16 +295,242 @@ function drawDay4() {
 
     // 文字水平位置（有點像練習英文時大小寫文字簿上一行行線，比較少會需要用到此語法）
     ctx.textBaseline
-	
+
     // 字框線粗度
     ctx.lineWidth = 2
     ctx.strokeStyle = '#351CA5'
-	
+
     // 字的語法（文字內容, x 坐標, y 坐標）
     ctx.strokeText('The Great Artist', 30, 60)
 
     ctx.fillStyle = '#351ca5'
     ctx.fillText('文字藝術師', 30, 150)
+
+    //漸層色坐標軸 (漸層色起點 X座標, Y座標, 漸層色終點 X座標, Y座標)
+    const gradient = ctx.createLinearGradient(100, 100, 400, 100)
+
+    //漸層色色號上色
+    gradient.addColorStop(0, '#FF8EA7')
+    gradient.addColorStop(0.5, '#A153F9')
+    gradient.addColorStop(1, '#5379F9')
+
+    //承接顏色的圖（字）
+    ctx.fillStyle = gradient
+    ctx.fillText('I AM ARTIST', 150, 240)
+
+    // 額外補充漸層色區塊
+    ctx.fillRect(25, 200, 100, 100)
+
+    // 立體感 POP 字
+    ctx.font = '48px Verdana'
+    ctx.fillStyle = '#351CA5'
+    ctx.fillText('Hello World!', 25, 375)
+    ctx.fillStyle = '#1FFFB8'
+    ctx.fillText('Hello World!', 25, 370)
+
+    // fillText 以最後一個參數設定整個字串的寬度
+    ctx.fillStyle = '#351CA5'
+    ctx.fillText('Hello Word!', 25, 435, 200)
+    ctx.fillStyle = '#1FFFB8'
+    ctx.fillText('Hello Word!', 20, 430, 200)
 }
 
 drawDay4()
+
+function drawDay5(V){
+    const canvas = document.querySelector('#day5')
+    canvas.width = 500
+    canvas.height = 500
+    const ctx = canvas.getContext('2d')
+    ctx.fillStyle = '#ffdc19'
+    ctx.fillRect(165, 180, 180, 180)
+
+    // 合成效果 API
+    let txt , option = ''
+    switch (V) {
+    case 1:
+        txt = 'default'
+        option = 'source-over'
+        break
+    case 2:
+        txt = '上方圖層重疊處'
+        option = 'source-in'
+        break
+    case 3:
+        txt = '透明重疊處'
+        option = 'source-out'
+        break
+
+    case 4:
+        txt = '上圖重疊處 + 下層'
+        option = 'source-atop'
+        break
+
+    case 5:
+        txt = '交換前後圖層'
+        option = 'destination-over'
+        break
+    case 6:
+        txt = '上圖重疊處'
+        option = 'destination-in'
+        break
+    case 7:
+        txt = '上圖重疊處透明'
+        option = 'destination-out'
+        break
+    case 8:
+        txt = '上圖重疊處 + 下層'
+        option = 'destination-atop'
+        break
+
+    case 9:
+        txt = '重疊處疊加顏色'
+        option = 'lighter'
+        break
+    case 10:
+        txt = '保留上圖層'
+        option = 'copy'
+        break
+    case 11:
+        txt = '重疊處透明'
+        option = 'xor'
+        break
+    case 12:
+        txt = '上圖層重疊處 + 上下圖顏色效果'
+        option = 'multiply'
+        break
+    case 13:
+        txt = '與 multiply 相反'
+        option = 'screen'
+        break
+    case 14:
+        txt = 'multipy + screen 混合'
+        option = 'overlay'
+        break
+    case 15:
+        txt = '重疊處 + 深色效果'
+        option = 'darken'
+        break
+    case 16:
+        txt = '重疊處 + 淺色效果'
+        option = 'lighten'
+        break
+
+        // 其他效果
+    case 17:
+        txt = '其他效果'
+        option = 'color-dodge'
+        break
+    case 18:
+        txt = '其他效果'
+        option = 'color-burn'
+        break
+    case 19:
+        txt = '其他效果'
+        option = 'hard-light'
+        break
+    case 20:
+        txt = '其他效果'
+        option = 'soft-light'
+        break
+    case 21:
+        txt = '其他效果'
+        option = 'difference'
+        break
+    case 22:
+        txt = '其他效果'
+        option = 'exclusion'
+        break
+    case 23:
+        txt = '其他效果'
+        option = 'hue'
+        break
+    case 24:
+        txt = '其他效果'
+        option = 'saturation'
+        break
+    case 25:
+        txt = '其他效果'
+        option = 'color'
+        break
+    case 26:
+        txt = '其他效果'
+        option ='luminosity'
+        break
+    default:
+        // break
+    }
+    ctx.globalCompositeOperation = option
+    ctx.beginPath()
+    ctx.fillStyle = '#1954ff'
+    ctx.arc(165, 180, 100, 0, 2 * Math.PI)
+    ctx.fill()
+
+    document.querySelector('#operation').innerText = txt
+
+}
+drawDay5(1)
+
+// 還沒效果先不放
+// document.querySelector('#operationSelect').addEventListener('change', function(){
+//     const V = document.querySelector('#operationSelect').value
+//     drawDay5(V)
+// })
+
+function drawDay6(){
+    const canvas = document.querySelector('#day6')
+    canvas.width = 500
+    canvas.height = 500
+    const ctx = canvas.getContext('2d')
+
+    // 圓心
+    ctx.arc(0, 0, 60, 0, 2 * Math.PI)
+    ctx.fillStyle = '#f20'
+    ctx.fill()
+
+    // 藍色
+    ctx.fillStyle = '#2d0cb6'
+    ctx.fillRect(100, 0, 80, 20)
+
+    // 黃色
+    // 旋轉角度 rotate(角度)
+    ctx.rotate((20 * Math.PI) / 180) // 20度
+    ctx.fillStyle = '#f5d700'
+    ctx.fillRect(100, 0, 80, 20)
+
+    // 綠色
+    // 旋轉會疊加所以如果上面已經旋轉了又寫旋轉就會累積上去
+    ctx.rotate((45 * Math.PI) / 180) // 65度
+    ctx.fillStyle = '#0cb66b'
+    ctx.fillRect(100, 0, 80, 20)
+
+
+    // 橘色
+    ctx.rotate((-65 * Math.PI) / 180) // 0度
+    ctx.fillStyle = '#rgba(231, 76, 60, 0.5)'
+    ctx.fillRect(250, 250, 150, 20)
+
+    // 移動畫布軸心
+    ctx.translate(250, 250)
+
+    // 圓心
+    ctx.arc(0, 0, 10, 0, 2 * Math.PI)
+    ctx.fillStyle = '#283747'
+    ctx.fill()
+
+    // 旋轉45度
+    ctx.rotate((45 * Math.PI) / 180)
+
+    // 藍色
+    ctx.fillStyle = 'rgba(46, 134, 193, 0.5)'
+    ctx.fillRect(0, 0, 150, 20)
+
+    // 旋轉45度
+    ctx.rotate((45 * Math.PI) / 180)
+
+    // 黃色
+    ctx.fillStyle = 'rgba(247, 220, 111, 0.5)'
+    ctx.fillRect(0, 0, 150, 20)
+}
+
+drawDay6()
