@@ -531,6 +531,37 @@ function drawDay6(){
     // 黃色
     ctx.fillStyle = 'rgba(247, 220, 111, 0.5)'
     ctx.fillRect(0, 0, 150, 20)
+
+    // 矯正還原位置
+    ctx.rotate(-(90 * Math.PI) / 180)
+    ctx.translate(-250, -250)
+    ctx.translate(10, 250)
+    // 移動 translate(X,Y) 等於css的translate
+    ctx.fillStyle = 'rgba(231, 76, 60, 0.5)'
+    ctx.fillRect(0, 0, 150, 20)
+    ctx.translate(30, 30)
+
+    ctx.fillStyle = 'rgba(46, 134, 193, 0.5)'
+    ctx.fillRect(0, 0, 150, 20)
+    
+    // 跟旋轉一樣如果連續寫則會是疊加
+    ctx.translate(30, 30)
+    ctx.fillStyle = 'rgba(47, 50, 11, 0.5)'
+    ctx.fillRect(0, 0, 150, 20)
+
+    // 變形 transform(水平縮放、水平傾斜、垂直傾斜、垂直縮放、水平移動、垂直移動)
+    // 紅色
+    ctx.fillStyle = 'rgba(231, 76, 60 ,0.5)'
+    ctx.fillRect(200, 200, 250, 100)
+
+    // 藍色
+    ctx.transform(1, 0, 0, 1, 0, 0)
+    ctx.fillStyle = 'rgba(46, 134, 193,0.5)'
+    ctx.fillRect(200, 200, 250, 100)
+
+    ctx.transform(1.5, 0, 0, 1, 0, 0)
+    ctx.fillStyle = 'rgba(46, 134, 193,0.5)'
+    ctx.fillRect(200, 200, 250, 100)
 }
 
 drawDay6()
