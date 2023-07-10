@@ -504,43 +504,44 @@ function drawDay6(){
     ctx.fillStyle = '#0cb66b'
     ctx.fillRect(100, 0, 80, 20)
 
-
-    // 橘色
-    ctx.rotate((-65 * Math.PI) / 180) // 0度
-    ctx.fillStyle = '#rgba(231, 76, 60, 0.5)'
-    ctx.fillRect(250, 250, 150, 20)
-
     // 移動畫布軸心
-    ctx.translate(250, 250)
-
+    ctx.rotate((-65 * Math.PI) / 180) // 0度
+    ctx.translate(280, 10)
+    
+    
     // 圓心
     ctx.arc(0, 0, 10, 0, 2 * Math.PI)
     ctx.fillStyle = '#283747'
     ctx.fill()
-
+    
+    // 橘色
+    ctx.fillStyle = 'rgba(231, 76, 60, 0.5)'
+    ctx.fillRect(0, 0, 150, 20)
+    
     // 旋轉45度
     ctx.rotate((45 * Math.PI) / 180)
-
+    
     // 藍色
     ctx.fillStyle = 'rgba(46, 134, 193, 0.5)'
     ctx.fillRect(0, 0, 150, 20)
-
+    
     // 旋轉45度
     ctx.rotate((45 * Math.PI) / 180)
-
+    
     // 黃色
     ctx.fillStyle = 'rgba(247, 220, 111, 0.5)'
     ctx.fillRect(0, 0, 150, 20)
-
-    // 矯正還原位置
+    
+    // 矯正還原0.0位置
     ctx.rotate(-(90 * Math.PI) / 180)
-    ctx.translate(-250, -250)
-    ctx.translate(10, 250)
+    ctx.translate(-280, -10)
+    ctx.translate(0, 250)
+
     // 移動 translate(X,Y) 等於css的translate
     ctx.fillStyle = 'rgba(231, 76, 60, 0.5)'
     ctx.fillRect(0, 0, 150, 20)
     ctx.translate(30, 30)
-
+    
     ctx.fillStyle = 'rgba(46, 134, 193, 0.5)'
     ctx.fillRect(0, 0, 150, 20)
     
@@ -548,20 +549,161 @@ function drawDay6(){
     ctx.translate(30, 30)
     ctx.fillStyle = 'rgba(47, 50, 11, 0.5)'
     ctx.fillRect(0, 0, 150, 20)
-
+    
+    // 矯正還原0.0位置
+    ctx.translate(-60, -60)
+    ctx.translate(0, 100)
+    
     // 變形 transform(水平縮放、水平傾斜、垂直傾斜、垂直縮放、水平移動、垂直移動)
     // 紅色
     ctx.fillStyle = 'rgba(231, 76, 60 ,0.5)'
-    ctx.fillRect(200, 200, 250, 100)
-
+    ctx.fillRect(0, 0, 100, 30)
+    
     // 藍色
     ctx.transform(1, 0, 0, 1, 0, 0)
     ctx.fillStyle = 'rgba(46, 134, 193,0.5)'
-    ctx.fillRect(200, 200, 250, 100)
-
+    ctx.fillRect(30, 0, 100, 30)
+    
     ctx.transform(1.5, 0, 0, 1, 0, 0)
     ctx.fillStyle = 'rgba(46, 134, 193,0.5)'
-    ctx.fillRect(200, 200, 250, 100)
+    ctx.fillRect(30, 0, 100, 30)
+
+}
+drawDay6()
+
+
+function drawDay7(){
+    const canvas = document.querySelector('#day7')
+    canvas.width = 500
+    canvas.height = 500
+    const ctx = canvas.getContext('2d')
+    const img = new Image()
+    img.src = 'https://images.unsplash.com/photo-1688448543484-ecd531cba9bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+    // 一定要監聽下載完成才執行，不然網速跟不上時就不會顯示
+    img.onload = function(){
+
+        // 填滿剩餘的空間(排除i=0 && j==0)
+        for(let i = 0; i < 2; i++) {
+            for (let j = 0; j < 2; j++){
+                if(i != 0 || j != 0){
+                    // drawImage(圖片來源,X座標,Y座標,長度,寬度)
+                    ctx.drawImage(img, i * 250, j * 250, 250, 250)
+                }
+            }
+        }
+
+        // drawImage(圖片來源,切割起點X座標,切割起點Y座標,切割寬度,切割高度,裁切後x軸座標,裁切後Y座標,裁切後影像寬度,裁切後影像高度)
+        ctx.drawImage(img, 100, 100, 600, 450, 0, 0, 250, 250)
+        // 將文字跟圖片結合
+        ctx.font = '36px Verdana'
+        ctx.fillStyle = '#006241'
+        ctx.fillText('好吃!', 83, 203)
+        ctx.fillStyle = '#1FFF25'
+        ctx.fillText('好吃!', 80, 200)
+        
+    }
+}
+drawDay7()
+
+function drawDay8(){
+    const canvas = document.querySelector('#day8')
+    canvas.width = 1170
+    canvas.height = 780
+    const ctx = canvas.getContext('2d')
+    const img = new Image()
+    img.src = 'https://images.unsplash.com/photo-1688448543484-ecd531cba9bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+    img.onload = function(){
+        ctx.drawImage(img, 0, 0, 1170, 780)
+        // 遮罩
+        ctx.globalCompositeOperation = 'destination-in'
+        ctx.fillStyle = '#000'
+        ctx.arc(585, 390, 350, 0, Math.PI * 2, true)
+        ctx.fill()
+    }
+
+}
+drawDay8()
+
+function drawDay9(){
+    day9Background()
+    day9Wall()
+    // day9SuitMan()
+    // day9Apple()
+    // day9Hat()
 }
 
-drawDay6()
+function day9Background(){
+    const canvas = document.querySelector('#day9-Background')
+    canvas.width = 480
+    canvas.height = 600
+    const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = '#333'
+    ctx.fillRect(0, 0, 480, 600)
+    ctx.font = '48px Verdana'
+    ctx.fillStyle = '#fff'
+    ctx.textAlign = 'center'
+    ctx.fillText('背景', 240, 300)
+    
+    ctx.beginPath()
+    ctx.moveTo(0,0)
+    ctx.lineTo(480,0)
+    ctx.lineTo(480,600)
+    ctx.lineTo(0,600)
+    ctx.closePath()
+    ctx.lineWidth = 10
+    ctx.strokeStyle = '#12CDFF'
+    ctx.stroke()
+
+}
+
+function day9Wall(){
+    const canvas = document.querySelector('#day9-Wall')
+    canvas.width = 480
+    canvas.height = 150
+    const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = 'rgba(255, 100, 100, 0.3)'
+    ctx.fillRect(0, 0, 480, 150)
+    ctx.font = '48px Verdana'
+    ctx.fillStyle = '#fff'
+    ctx.textAlign = 'center'
+    ctx.fillText('Wall', 240, 75)
+
+    ctx.beginPath()
+    ctx.moveTo(0,0)
+    ctx.lineTo(480,0)
+    ctx.lineTo(480,150)
+    ctx.lineTo(0,150)
+    ctx.closePath()
+    ctx.lineWidth = 10
+    ctx.strokeStyle = 'rgba(255, 100, 100, 0.5)'
+    ctx.stroke()
+
+}
+
+function day9SuitMan(){
+    const canvas = document.querySelector('#day9-Suit-Man')
+    canvas.width = 300
+    canvas.height = 600
+    const ctx = canvas.getContext('2d')
+
+}
+
+function day9Apple(){
+    const canvas = document.querySelector('#day9-Apple')
+    canvas.width = 200
+    canvas.height = 200
+    const ctx = canvas.getContext('2d')
+
+}
+
+function day9Hat(){
+    const canvas = document.querySelector('#day9-Hat')
+    canvas.width = 200
+    canvas.height = 200
+    const ctx = canvas.getContext('2d')
+
+}
+
+drawDay9()
