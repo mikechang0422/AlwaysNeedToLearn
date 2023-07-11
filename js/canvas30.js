@@ -627,7 +627,7 @@ drawDay8()
 function drawDay9(){
     day9Background()
     day9Wall()
-    // day9SuitMan()
+    day9SuitMan()
     // day9Apple()
     // day9Hat()
 }
@@ -687,6 +687,24 @@ function day9SuitMan(){
     canvas.width = 300
     canvas.height = 600
     const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = 'rgba(80, 255, 100, 0.3)'
+    ctx.fillRect(0, 0, 300, 600)
+    ctx.font = '48px Verdana'
+    ctx.fillStyle = '#fff'
+    ctx.textAlign = 'center'
+    ctx.fillText('SuitMan', 150, 300)
+
+    ctx.beginPath()
+    ctx.moveTo(0,0)
+    ctx.lineTo(300,0)
+    ctx.lineTo(300,600)
+    ctx.lineTo(0,600)
+    ctx.closePath()
+    ctx.lineWidth = 10
+    ctx.strokeStyle = 'rgba(80, 255, 100, 0.5)'
+    ctx.stroke()
+
 
 }
 
