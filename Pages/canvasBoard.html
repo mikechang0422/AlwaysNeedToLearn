@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Img Style</title>
+    <link rel="stylesheet"
+          href="../style/style.css">
+    <style>
+        body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+        color: white;
+        font-size: 14px;
+        }
+
+        h1 {
+        background-clip: text;
+        }
+
+        .container {
+        height: 100%;
+        display: flex;
+        }
+
+        #toolbox {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        width: 350px;
+        height: 50px;
+        gap: 5px;
+        background-color: #3078d3;
+        border-radius: 5px;
+        margin: 10px;
+        }
+
+        #stroke {
+            height: 32px;
+        }
+
+        #lineWidth {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+        }
+
+        #toolbox button {
+        background-color: orange;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 0 10px;
+        height: 32px;
+        line-height: 32px;
+        }
+
+        .canvas {
+            background-color: #333; 
+            border: 5px solid #666;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="warpper">
+        <h1 class="uppercase text_center pb_5">Canvas</h1>
+        <section class="canvas_block">
+            <div id="toolbox">
+                <div>
+                    <label for="stroke">Color</label>
+                    <input id="stroke"
+                           name='stroke'
+                           type="color">
+                </div>
+                <div>
+                    <label for="lineWidth">Pen Width</label>
+                    <input id="lineWidth"
+                           name='lineWidth'
+                           type="number"
+                           value="3">
+                </div>
+                <div>
+                    <button id="clear">Clear Board</button>
+                </div>
+            </div>
+            <canvas id="canvasBoard"
+                    class="canvas"></canvas>
+        </section>
+        <div class="tool text_center">
+            <a class="btn"
+               href="./index.html">回上一頁</a>
+        </div>
+    </div>
+    <script>
+        (function () {
+            const board = document.getElementById("canvasBoard");
+            const toolbox = document.getElementById("toolbox");
+            const ctx = board.getContext("2d");
+
+            const canvasOffsetX = board.offsetLeft;
+            const canvasOffsetY = board.offsetTop;
+
+            board.width = window.innerWidth - canvasOffsetX;
+            board.height = window.innerHeight - canvasOffsetY;
+
+            let isPainting = false;
+            let lineWidth = 3;
+            let penXLocation = 0;
+            let penYLocation = 0;
+
+            toolbox.addEventListener("click", (e) => {
+                if (e.target.id === "clear") {
+                    ctx.clearRect(0, 0, board.width, board.height);
+                }
+            });
+
+            toolbox.addEventListener("change", (e) => {
+                if (e.target.id === "stroke") {
+                    ctx.strokeStyle = e.target.value;
+                }
+
+                if (e.target.id === "lineWidth") {
+                    lineWidth = e.target.value;
+                }
+            });
+
+            const draw = (e) => {
+                if (!isPainting) {
+                    return;
+                }
+                ctx.strokeStyle = '#fff'
+                ctx.lineWidth = lineWidth;
+                ctx.lineCap = "round";
+
+                ctx.lineTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY);
+                ctx.stroke();
+            };
+
+            board.addEventListener("mousedown", (e) => {
+                isPainting = true;
+                penXLocation = e.clientX;
+                penYLocation = e.clientY;
+            });
+
+            board.addEventListener("mouseup", (e) => {
+                isPainting = false;
+                ctx.stroke();
+                ctx.beginPath();
+            });
+
+            board.addEventListener("mousemove", draw);
+        })();
+    </script>
+</body>
+
+</html>

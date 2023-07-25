@@ -628,8 +628,8 @@ function drawDay9(){
     day9Background()
     day9Wall()
     day9SuitMan()
-    // day9Apple()
-    // day9Hat()
+    day9Apple()
+    day9Hat()
 }
 
 function day9Background(){
@@ -705,14 +705,30 @@ function day9SuitMan(){
     ctx.strokeStyle = 'rgba(80, 255, 100, 0.5)'
     ctx.stroke()
 
-
 }
 
 function day9Apple(){
     const canvas = document.querySelector('#day9-Apple')
-    canvas.width = 200
-    canvas.height = 200
+    canvas.width = 100
+    canvas.height = 100
     const ctx = canvas.getContext('2d')
+
+    ctx.fillStyle = 'rgba(255, 50, 50, 0.3)'
+    ctx.fillRect(0, 0, 100, 100)
+    ctx.font = '16px Verdana'
+    ctx.fillStyle = '#fff'
+    ctx.textAlign = 'center'
+    ctx.fillText('Apple', 50, 50)
+
+    ctx.beginPath()
+    ctx.moveTo(0,0)
+    ctx.lineTo(100,0)
+    ctx.lineTo(100,100)
+    ctx.lineTo(0,100)
+    ctx.closePath()
+    ctx.lineWidth = 10
+    ctx.strokeStyle = 'rgba(255, 50, 50, 0.5)'
+    ctx.stroke()
 
 }
 
@@ -722,6 +738,390 @@ function day9Hat(){
     canvas.height = 200
     const ctx = canvas.getContext('2d')
 
+    ctx.fillStyle = 'rgba(80, 255, 255, 0.3)'
+    ctx.fillRect(0, 0, 200, 200)
+    ctx.font = '48px Verdana'
+    ctx.fillStyle = '#fff'
+    ctx.textAlign = 'center'
+    ctx.fillText('Hat', 100, 100)
+
+    ctx.beginPath()
+    ctx.moveTo(0,0)
+    ctx.lineTo(200,0)
+    ctx.lineTo(200,200)
+    ctx.lineTo(0,200)
+    ctx.closePath()
+    ctx.lineWidth = 10
+    ctx.strokeStyle = 'rgba(80, 255, 255, 0.5)'
+    ctx.stroke()
+
 }
 
 drawDay9()
+
+function drawDay10(){
+    const canvas = document.querySelector('#day10')
+    canvas.width = 500
+    canvas.height = 500
+    const ctx = canvas.getContext('2d')
+    let fillColor = 'rgba(80, 110, 255, 0.3)'
+    let strokeColor = 'rgba(80, 110, 255, 0.5)'
+    drawRect(ctx, fillColor, strokeColor)
+    
+    // save() 儲存接下來所畫的
+    ctx.save()
+    ctx.translate(50, 50)
+    fillColor = 'rgba(80, 160, 255, 0.3)'
+    strokeColor = 'rgba(80, 160, 255, 0.5)'
+    drawRect(ctx, fillColor, strokeColor)
+    // restore() 是配合save()儲存兩者之間的繪製，並將畫布回歸原點
+    ctx.restore()
+    
+    ctx.save()
+    ctx.rotate((45 * Math.PI) / 180)
+    fillColor = 'rgba(80, 210, 255, 0.3)'
+    strokeColor = 'rgba(80, 210, 255, 0.5)'
+    drawRect(ctx, fillColor, strokeColor)
+    ctx.restore()
+
+    ctx.save()
+    ctx.translate(200, 200)
+    ctx.rotate((30 * Math.PI) / 180)
+    fillColor = 'rgba(110, 210, 155, 0.3)'
+    strokeColor = 'rgba(110, 210, 155, 0.5)'
+    drawRect(ctx, fillColor, strokeColor)
+    ctx.restore()
+
+}
+drawDay10()
+
+function drawRect(ctx, fillColor, strokeColor){
+    ctx.fillStyle = fillColor
+    ctx.fillRect(0, 0, 200, 200)
+
+    ctx.beginPath()
+    ctx.moveTo(0,0)
+    ctx.lineTo(200,0)
+    ctx.lineTo(200,200)
+    ctx.lineTo(0,200)
+    ctx.closePath()
+    ctx.lineWidth = 10
+    ctx.strokeStyle = strokeColor
+    ctx.stroke()
+}
+
+function drawDay11() {
+    const canvas = document.querySelector('#day11')
+    canvas.width = 500
+    canvas.height = 500
+    const ctx = canvas.getContext('2d')
+
+    const city = new Image()
+    const bubbles = new Image()
+    const blossom = new Image()
+
+    city.src =
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Taipei_101_twilight.jpg/378px-Taipei_101_twilight.jpg'
+    bubbles.src =
+        'https://www.pngmart.com/files/8/Bubbles-Powerpuff-Girls-PNG-Transparent-File.png'
+    blossom.src =
+        'https://www.pngkey.com/png/full/139-1397645_file-history-blossom-powerpuff-girls.png'
+
+    drawPowerPuff(ctx,city,bubbles,blossom)
+}
+function drawPowerPuff(ctx,city,bubbles,blossom) {
+    ctx.globalCompositeOperation = 'destination-over'
+    // clear canvas
+    ctx.clearRect(0, 0, 500, 500)
+
+    ctx.fillStyle = 'rgba(0,0,0,0.4)'
+    ctx.strokeStyle = 'rgba(0,50,350,0.4)'
+    ctx.save()
+
+    const time = new Date()
+    // 花花 斜線移動 500px跑60秒
+    ctx.save()
+    ctx.translate((500 / 60) * time.getSeconds(), (500 / 60) * time.getSeconds())
+    ctx.drawImage(blossom, 0, 0, 50, 70)
+    ctx.restore()
+
+    //泡泡 繞圓 圓心為(200,200) 速度為當前時間*-5度 半徑為drawImage的 75,75
+    ctx.save()
+    ctx.translate(200, 200)
+    ctx.rotate(((2 * Math.PI) / 180) * time.getSeconds() * -5)
+    ctx.drawImage(bubbles, 75, 75, 50, 50)
+    ctx.restore()
+
+    ctx.restore()
+
+    ctx.drawImage(city, 0, 0, 500, 500)
+}
+
+setInterval(drawDay11, 100)
+
+function drawDay12() {
+    const canvas = document.querySelector('#day12')
+    canvas.style['background-color'] = '#333'
+    canvas.style['border-color'] = '#666'
+    canvas.width = 500
+    canvas.height = 500
+    const ctx = canvas.getContext('2d')
+    ctx.translate(250,250)
+    clockBody(ctx)
+    staticHandler(ctx)
+    clockNumber(ctx)
+    setTimeHandlar(ctx)
+    
+    window.requestAnimationFrame(drawDay12)
+}
+
+function clockBody(ctx){
+    // 錶面
+    ctx.beginPath()
+    ctx.fillStyle = 'black'
+    ctx.arc(0, 0, 230, 0, 2 * Math.PI)
+    ctx.fill()
+
+    ctx.beginPath()
+    ctx.arc(0, 0, 230, 0, 2 * Math.PI, true)
+    ctx.strokeStyle = 'rgba(250, 222, 1, 0.1)'
+    ctx.stroke()
+
+    ctx.beginPath()
+    const img = new Image()
+    img.src = 'https://tw.portal-pokemon.com/play/resources/pokedex/img/pm/2b3f6ff00db7a1efae21d85cfb8995eaff2da8d8.png'
+    img.onload = function(){
+        ctx.translate(-105, -125)
+        ctx.drawImage(img, 0, 0, 250, 250)
+        ctx.translate(105, 125)
+    }
+}
+
+function staticHandler(ctx){
+    // 刻度 1分
+    ctx.save()
+    ctx.lineWidth = 3
+    ctx.strokeStyle = 'rgba(250, 222, 1, 0.5)'
+    for(let i = 0; i < 60; i++){
+        if(i % 5 !== 0){
+            ctx.beginPath()
+            // 線條長度
+            ctx.moveTo(217, 0)
+            ctx.lineTo(220, 0)
+            ctx.stroke()
+        }
+        //每六度轉一次
+        ctx.rotate(Math.PI / 30)
+    }
+    ctx.restore()
+
+    // 刻度 5分
+
+    ctx.save()
+    ctx.strokeStyle = 'rgba(250, 222, 1, 0.7)'
+    for(let i = 0; i < 12; i++){
+        ctx.beginPath()
+        ctx.moveTo(215, 0)
+        ctx.lineTo(220, 0)
+        ctx.stroke()
+        //每30度轉一次
+        ctx.rotate(Math.PI / 6)
+    }
+    ctx.restore()
+
+}
+
+function clockNumber(ctx){
+    // 小時數字
+    const hourNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    ctx.save()
+    ctx.beginPath()
+    ctx.font = '25px sans-serif'
+    ctx.textAlign = 'center'
+    ctx.textBaseline = 'middle'
+    ctx.fillStyle = 'rgba(250, 222, 1, 1.0)'
+    
+    for (let i = 0; i < hourNum.length; i++) {
+        let x = 195 * Math.cos(((i * 30 - 60) * Math.PI) / 180)
+        let y = 195 * Math.sin(((i * 30 - 60) * Math.PI) / 180)
+        ctx.fillText(hourNum[i], x, y)
+    }
+
+    ctx.restore()
+}
+
+function setTimeHandlar(ctx){
+    const now = new Date()
+    const sec = now.getSeconds()
+    const min = now.getMinutes()
+    const hr = now.getHours() % 12
+
+    // 角度錯誤 校正回來
+    ctx.rotate(-90 * Math.PI / 180)
+
+    // 時針
+    ctx.save()
+    ctx.rotate(
+        (Math.PI / 6) * hr + (Math.PI / 360) * min + (Math.PI / 21600) * sec
+    )
+    ctx.lineWidth = 14
+    ctx.beginPath()
+    ctx.moveTo(30, 0)
+    ctx.lineTo(80, 0)
+    ctx.strokeStyle = 'rgba(250, 222, 1, 1.0)'
+    ctx.stroke()
+    ctx.restore()
+
+    ctx.save()
+    ctx.rotate(
+        (Math.PI / 6) * hr + (Math.PI / 360) * min + (Math.PI / 21600) * sec
+    )
+    ctx.lineWidth = 10
+    ctx.beginPath()
+    ctx.moveTo(30, 0)
+    ctx.lineTo(78, 0)
+    ctx.strokeStyle = '#333'
+    ctx.stroke()
+    ctx.restore()
+
+    ctx.save()
+    ctx.rotate(
+        (Math.PI / 6) * hr + (Math.PI / 360) * min + (Math.PI / 21600) * sec
+    )
+    ctx.lineWidth = 8
+    ctx.beginPath()
+    ctx.moveTo(0, 0)
+    ctx.lineTo(30, 0)
+    ctx.strokeStyle = 'rgba(250, 222, 1, 1.0)'
+    ctx.stroke()
+    ctx.restore()
+
+    // 分針
+    ctx.save()
+    ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec)
+    ctx.lineWidth = 14
+    ctx.beginPath()
+    ctx.moveTo(30, 0)
+    ctx.lineTo(132, 0)
+    ctx.strokeStyle = 'rgba(250, 222, 1, 1.0)'
+    ctx.stroke()
+    ctx.restore()
+    ctx.beginPath()
+    ctx.arc(0, 0, 10, 0, Math.PI * 2, true)
+    ctx.fill()
+
+    ctx.save()
+    ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec)
+    ctx.lineWidth = 8
+    ctx.beginPath()
+    ctx.moveTo(30, 0)
+    ctx.lineTo(130, 0)
+    ctx.strokeStyle = '#333'
+    ctx.stroke()
+    ctx.restore()
+    ctx.beginPath()
+    ctx.arc(0, 0, 10, 0, Math.PI * 2, true)
+    ctx.fill()
+
+    ctx.save()
+    ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec)
+    ctx.lineWidth = 8
+    ctx.beginPath()
+    ctx.moveTo(30, 0)
+    ctx.lineTo(0, 0)
+    ctx.strokeStyle = 'rgba(250, 222, 1, 1.0)'
+    ctx.stroke()
+    ctx.restore()
+    ctx.beginPath()
+    ctx.arc(0, 0, 10, 0, Math.PI * 2, true)
+    ctx.fill()
+
+    // 秒針
+    ctx.save()
+    ctx.rotate((sec * Math.PI) / 30)
+    ctx.strokeStyle = '#E41515'
+    ctx.fillStyle = 'white'
+    ctx.lineWidth = 3
+    ctx.beginPath()
+    ctx.moveTo(-30, 0)
+    ctx.lineTo(175, 0)
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.fillStyle = '#E41515'
+    ctx.arc(0, 0, 10, 0, Math.PI * 2, true)
+    ctx.fill()
+    ctx.beginPath()
+    ctx.stroke()
+    ctx.fillStyle = 'black'
+    ctx.arc(0, 0, 5, 0, Math.PI * 2, true)
+    ctx.fill()
+    ctx.restore()
+}
+window.requestAnimationFrame(drawDay12)
+
+function drawDay14(){
+    const toolbox = document.getElementById('toolbox')
+    const canvas = document.querySelector('#day14')
+    canvas.width = 500
+    canvas.height = 500
+    canvas.style['background-color'] = '#333'
+    canvas.style['border-color'] = '#666'
+    const ctx = canvas.getContext('2d')
+    const canvasOffsetX = canvas.offsetLeft
+    const canvasOffsetY = canvas.offsetTop
+
+    canvas.width = window.innerWidth - canvasOffsetX
+    canvas.height = window.innerHeight - canvasOffsetY
+    
+    let isPainting = false
+    let lineWidth = 3
+    // eslint-disable-next-line no-unused-vars
+    let penXLocation = 0
+    // eslint-disable-next-line no-unused-vars
+    let penYLocation = 0
+
+    toolbox.addEventListener('click', (e) => {
+        if (e.target.id === 'clear') {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+        }
+    })
+
+    toolbox.addEventListener('change', (e) => {
+        if (e.target.id === 'stroke') {
+            ctx.strokeStyle = e.target.value
+        }
+        if (e.target.id === 'lineWidth') {
+            lineWidth = e.target.value
+        }
+    })
+
+    const draw = (e) => {
+        if (!isPainting) {
+            return
+        }
+        ctx.strokeStyle = '#fff'
+        ctx.lineWidth = lineWidth
+        ctx.lineCap = 'round'
+
+        // 跟範例不一樣因此我們還要修改計算 這部分先跳過 如果要看完整的原始檔就從canvasBoard看
+        ctx.lineTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY)
+        ctx.stroke()
+    }
+
+    canvas.addEventListener('mousedown', (e) => {
+        isPainting = true
+        penXLocation = e.clientX
+        penYLocation = e.clientY
+    })
+      
+    // eslint-disable-next-line no-unused-vars
+    canvas.addEventListener('mouseup', (e) => {
+        isPainting = false
+        ctx.stroke()
+        ctx.beginPath()
+    })
+      
+    canvas.addEventListener('mousemove', draw)
+}
+
+drawDay14()

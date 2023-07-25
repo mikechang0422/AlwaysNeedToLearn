@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Img Style</title>
+    <link rel="stylesheet"
+          href="../style/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            color: white;
+            font-size: 14px;
+        }
+
+        h1 {
+            background-clip: text;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            background-color: black;
+        }
+
+        #toolbox {
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            width: 200px;
+            height: 70px;
+            background-color: #7851d6;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        #toolbox input {
+            width: 36px;
+            text-align: center;
+        }
+
+        #toolbox button {
+            background-color: #212121;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            padding: 0 10px;
+            height: 32px;
+            line-height: 32px;
+        }
+
+        .canvas {
+            background-color: #333;
+            border: 5px solid #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="warpper">
+        <h1 class="uppercase text_center pb_5">Canvas</h1>
+        <section class="canvas_block">
+            <div id="toolbox">
+                <div>
+                    <label for="number">數量</label>
+                    <input id="number" name='number' type="width" value="10">
+                </div>
+                <div>
+                    <label for="lineWidth">寬度</label>
+                    <input id="lineWidth" name='lineWidth' type="lineWidth" value="10">
+                </div>
+                <div>
+                    <label for="rotateSpeed">轉速</label>
+                    <input id="rotateSpeed" name='rotateSpeed' type="speed" value="10">
+                </div>
+                <div>
+                    <button id="magicBtn"> Magic </button>
+                </div>
+            </div>
+            <canvas id="canvas"
+                    class="canvas"></canvas>
+        </section>
+        <div class="tool text_center">
+            <a class="btn"
+               href="./index.html">回上一頁</a>
+        </div>
+    </div>
+    <script>
+        (function () {
+            const canvas = document.getElementById("canvas");
+            const context = canvas.getContext("2d");
+            context.globalAlpha = 0.5;
+
+            const canvasOffsetY = canvas.offsetTop;
+
+            // 圓型半徑
+            const cursor = {
+                x: innerWidth / 2,
+                y: innerHeight / 2
+            };
+
+            let particlesArray = [];
+
+            setSize();
+            anim();
+
+            toolbox.addEventListener("click", (e) => {
+                if (e.target.id === "magicBtn") {
+                    const amountElement = document.getElementById("number");
+                    const amount = amountElement.value;
+                    const widthElement = document.getElementById("lineWidth");
+                    const width = widthElement.value;
+                    const speedElement = document.getElementById("rotateSpeed");
+                    const speed = speedElement.value;
+                    generateParticles(amount, width, speed);
+                }
+            });
+
+            addEventListener("mousemove", (e) => {
+                cursor.x = e.clientX;
+                cursor.y = e.clientY - canvasOffsetY;
+            });
+
+            addEventListener(
+                "touchmove",
+                (e) => {
+                    e.preventDefault();
+                    cursor.x = e.touches[0].clientX;
+                    cursor.y = e.touches[0].clientY;
+                },
+                { passive: false }
+            );
+
+            addEventListener("resize", () => setSize());
+
+            // 粒子圓形軌跡
+            function generateParticles(amount, width, speed) {
+                for (let i = 0; i < amount; i++) {
+                    particlesArray[i] = new Particle(
+                        width,
+                        width,
+                        speed,
+                        generateColor(),
+                        0.02
+                    );
+                }
+            }
+
+            //隨機產生顏色
+            function generateColor() {
+                let hexSet = "0123456789ABCDEF";
+                let finalHexString = "#";
+                for (let i = 0; i < 6; i++) {
+                    finalHexString += hexSet[Math.ceil(Math.random() * 15)];
+                }
+                return finalHexString;
+            }
+
+            function setSize() {
+                canvas.height = innerHeight;
+                canvas.width = innerWidth;
+            }
+
+            function Particle(x, y, particleTrailWidth, strokeColor, rotateSpeed) {
+                this.x = x;
+                this.y = y;
+                this.particleTrailWidth = particleTrailWidth;
+                this.strokeColor = strokeColor;
+                this.theta = Math.random() * Math.PI * 2;
+                this.rotateSpeed = rotateSpeed;
+                this.t = Math.random() * 150;
+
+                this.rotate = () => {
+                    const ls = {
+                        x: this.x,
+                        y: this.y
+                    };
+                    this.theta += this.rotateSpeed;
+                    this.x = cursor.x + Math.cos(this.theta) * this.t;
+                    this.y = cursor.y + Math.sin(this.theta) * this.t;
+                    context.beginPath();
+                    context.lineWidth = this.particleTrailWidth;
+                    context.strokeStyle = this.strokeColor;
+                    context.moveTo(ls.x, ls.y);
+                    context.lineTo(this.x, this.y);
+                    context.stroke();
+                };
+            }
+
+            function anim() {
+                requestAnimationFrame(anim);
+
+                context.fillStyle = "rgba(0,0,0,0.05)";
+                context.fillRect(0, 0, canvas.width, canvas.height);
+
+                particlesArray.forEach((particle) => particle.rotate());
+            }
+        })();
+    </script>
+</body>
+
+</html>
