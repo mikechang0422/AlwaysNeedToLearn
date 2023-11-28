@@ -1374,6 +1374,79 @@ input[type=submit].link {
   color: #005178;
 }
 
+.list-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 12px 6px;
+  width: 100%;
+  max-width: 480px;
+  gap: 10px;
+  border: 1px solid #dee2e6;
+  -webkit-box-shadow: 1px 1px 3px #dee2e6;
+          box-shadow: 1px 1px 3px #dee2e6;
+}
+.list-box .not-select-block,
+.list-box .has-select-block {
+  width: 50%;
+}
+.list-box .not-select-block .title,
+.list-box .has-select-block .title {
+  padding: 6px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.list-box .not-select-block input[type=search],
+.list-box .has-select-block input[type=search] {
+  margin-bottom: 6px;
+  width: 100%;
+  -webkit-box-shadow: 1px 1px 3px snow #dee2e6;
+          box-shadow: 1px 1px 3px snow #dee2e6;
+}
+.list-box select[multiple] {
+  min-width: 150px;
+  height: 192px;
+}
+.list-box select[multiple] option {
+  padding: 6px 12px;
+}
+.list-box select[multiple] option:hover {
+  background-color: #dee2e6;
+}
+.list-box select[multiple] option:active {
+  color: #5f5e5e;
+}
+.list-box select[multiple] option.hide {
+  display: none;
+}
+.list-box select[multiple]:focus {
+  border-color: #5f5e5e;
+  -webkit-box-shadow: 0 0 0 0.25rem rgba(60, 81, 91, 0.25);
+          box-shadow: 0 0 0 0.25rem rgba(60, 81, 91, 0.25);
+}
+.list-box select[multiple]:focus option:checked {
+  background: #5f5e5e -webkit-gradient(linear, left bottom, left top, from(#5f5e5e), to(#5f5e5e));
+  background: #5f5e5e linear-gradient(0deg, #5f5e5e 0%, #5f5e5e 100%);
+}
+.list-box .controll-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+.list-box .controll-list .btn {
+  width: 50px;
+}
+
 .loader_1 {
   width: 190px;
   height: 190px;
@@ -1615,6 +1688,10 @@ input[type=submit].link {
             transform: scale(0);
   }
 }
+.select-group option.hide {
+  display: none;
+}
+
 table {
   width: 100%;
   background-color: #fff;

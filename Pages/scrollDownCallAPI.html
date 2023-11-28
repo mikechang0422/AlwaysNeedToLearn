@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>scrollDownCallAPI</title>
+    <link rel="stylesheet"
+          href="../style/style.css">
+    <style>
+        .menu {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            gap: 4px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-color: #fff;
+        }
+
+        .menu li {
+            position: relative;
+            display: block;
+            padding: 2rem 1.5rem 8rem;
+            width: calc((100% - 4px) / 2);
+            background-color: #fff;
+        }
+
+        .menu li.no-before::before {
+            width: 0;
+            height: 0;
+        }
+
+        .menu li.no-after::after {
+            width: 0;
+            height: 0;
+        }
+
+        .menu li::before {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 4px;
+            background-color: #f5f5f5;
+            content: "";
+        }
+
+        .menu li::after {
+            position: absolute;
+            top: 0;
+            right: -2px;
+            z-index: 1;
+            width: 4px;
+            height: 100%;
+            background-color: #f5f5f5;
+            content: "";
+        }
+
+        .menu li:nth-child(2n+2)::after {
+            width: 0;
+            height: 0;
+        }
+
+        .menu .img-block {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 3px;
+            width: 100%;
+            height: auto;
+            background-color: #fff;
+            border: 1px solid #616162;
+            border-radius: 1rem;
+            aspect-ratio: 1/1;
+        }
+
+        .menu img {
+            width: 100%;
+            height: initial;
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+
+        .menu .title,
+        .menu p {
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        .menu p {
+            margin-top: 0.3rem;
+        }
+
+        .menu .title {
+            margin-top: 1rem;
+            font-size: 2rem;
+            color: #616162;
+        }
+
+        .menu .dollars {
+            font-size: 1.6rem;
+            color: #e60012;
+        }
+
+        .menu .amount {
+            font-size: 1.6rem;
+            color: #aaa;
+        }
+
+        .menu .introduce {
+            font-size: 0.8rem;
+            color: #616162;
+        }
+
+        .menu .calorie {
+            font-size: 1rem;
+            color: #f7941d;
+        }
+
+        .menu .btn-block {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .menu .btn {
+            color: #fff;
+            background-color: #000;
+        }
+
+        @media (min-width: 576px) {
+            .menu .introduce {
+                font-size: 0.8rem;
+                color: #616162;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .menu {
+                gap: 0;
+                margin-top: 2rem;
+            }
+
+            .menu li {
+                width: 33.3333333333%;
+            }
+
+            .menu li:nth-child(2n+2)::after {
+                width: 4px;
+                height: 100%;
+            }
+
+            .menu li:nth-child(3n+3)::after {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .menu li {
+                width: 25%;
+            }
+
+            .menu li:nth-child(2n+2)::after {
+                width: 4px;
+                height: 100%;
+            }
+
+            .menu li:nth-child(3n+3)::after {
+                width: 4px;
+                height: 100%;
+            }
+
+            .menu li:nth-child(4n+4)::after {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .menu li {
+                width: 16.6666666667%;
+            }
+
+            .menu li:nth-child(4n+4)::after {
+                width: 4px;
+                height: 100%;
+            }
+
+            .menu li:nth-child(2n+2)::after {
+                width: 4px;
+                height: 100%;
+            }
+
+            .menu li:nth-child(6n+6)::after {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        .max_width {
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .btn {
+            margin: 2rem 0;
+        }
+
+        .end-message {
+            margin: 2rem 0;
+            padding: 1rem;
+            width: 100%;
+            font-size: 3rem;
+            font-weight: 700;
+            color: antiquewhite;
+            background-color: #aaa;
+            border: 2px double #333;
+        }
+
+        .show_load_1 {
+            position: fixed;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #333c;
+            transition: all 0.3s ease-in-out;
+            z-index: 9999;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="warpper max_width">
+        <section>
+            <ul class="menu set-img-height"
+                id="dataList">
+            </ul>
+            <input type="hidden" name="buyValue">
+        </section>
+        <a class="btn"
+           href="./index.html">回上一頁</a>
+    </div>
+    <div class="show_load show_load_1">
+        <div class="loader_1"></div>
+    </div>
+    <script src="../Js/scrollDownCallAPI.js"
+            defer></script>
+    <script>
+        // // 创建一个简单的 Promise
+        // const myPromise = new Promise((resolve, reject) => {
+        //     // 异步操作，在此示例中是一个 setTimeout 模拟
+        //     setTimeout(() => {
+        //         const randomNumber = Math.random(); // 模拟异步操作返回的数据
+        //         if (randomNumber) {
+        //             resolve(randomNumber); // 如果满足条件，调用 resolve，表示操作成功完成
+        //         } else {
+        //             reject(new Error('Random number is too small')); // 如果不满足条件，调用 reject，表示操作失败
+        //         }
+        //     }, 3000); // 延迟1秒模拟异步操作
+        // });
+
+        // // 使用 Promise
+        // myPromise
+        //     .then((result) => {
+        //         console.log('操作成功:', result); // 成功时的处理逻辑
+        //     })
+        //     .catch((error) => {
+        //         console.error('操作失败:', error); // 失败时的处理逻辑
+        //     });
+    
+        // const loader1 = document.querySelector('.show_load_1')
+        // const loader = document.querySelectorAll('.show_load')
+
+        // function showLoading1() {
+        //     loader1.style.display = 'flex'
+        // }
+
+    </script>
+</body>
+
+</html>

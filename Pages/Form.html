@@ -172,6 +172,58 @@
                             <input id="B" type="radio" name="A" checked> <label for="B">B</label>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="capitalize title">ListBox</td>
+                        <td colspan="3">
+                            <div class="list-box listBox">
+                                <div class="not-select-block">
+                                    <h4 class="title">未添加項目</h4>
+                                    <input type="search" class="searchLeftInput">
+                                    <div class="sleect-block">
+                                        <select multiple="multiple" class="form-control leftBox">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="controll-list">
+                                    <input type='button' value='>>' class="btn btn-outline-secondary btnAllRight" />
+                                    <input type='button' value='>' class="btn btn-outline-secondary btnRight" />
+                                    <input type='button' value='<' class="btn btn-outline-secondary btnLeft" />
+                                    <input type='button' value='<<' class="btn btn-outline-secondary btnAllLeft" />
+                                </div>
+                                <div class="has-select-block">
+                                    <h4 class="title">已添加項目</h4>
+                                    <input type="search" class="searchRightInput">
+                                    <div class="sleect-block">
+                                        <select multiple="multiple" class="form-control rightBox">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="capitalize title">slectGroup</td>
+                        <td colspan="3">
+                            <div class="select-block select-group">
+                                <select class="start-select">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                                <span>~</span>
+                                <select class="end-select">
+                                    <option value="1" selected>1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
                 </table>
             </section>
             <div class="tool text_center">
@@ -181,6 +233,8 @@
         </form>
     </div>
     <script src="../Js/form.js"></script>
+    <script src="../Js/listbox.js"></script>
+    <script src="../Js/selectGroup.js"></script>
 </body>
 
 </html>
