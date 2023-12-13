@@ -13,6 +13,7 @@ rabbit.printDaily()
 
 
 //.map 可以拋棄forEach
+//.新的理解，.map會回傳，forEach不會回傳，如果不用回傳用for-each就可以了
 const data = [
     {no:'1',name:'aaa',old:'18'},
     {no:'2',name:'bbb',old:'20'},
